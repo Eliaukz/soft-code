@@ -1,0 +1,33 @@
+<image class="circleImage" src="{{avatarUrl}}"></image>
+
+<view class="label-list">
+    <view class="label">微信名:</view>
+    <view class="label">{{userInfo.nickName}}</view>
+</view>
+<view class="label-list">
+    <text class="label" space="emsp"> 账号:</text>
+    <view class="label">{{userInfo.account_id}}</view>
+</view>
+
+<button bindtap="changeUserAvatar" class="buttonType">修改头像</button>
+<button bindtap="changeUser" class="buttonType">切换用户</button>
+
+
+<view class="flex-container">
+    <view class="flex-item" bindtap="showContent" data-id="1">我的发布</view>
+    <view class="flex-item" bindtap="showContent" data-id="2">收藏栏</view>
+    <view class="flex-item" bindtap="showContent" data-id="3">浏览记录</view>
+</view>
+
+<view wx:if="{{currentView == 1}}">
+    <view> 我的发布</view>
+    <view wx:for="{{userpublish}}" class="publish"> </view>
+</view>
+<view wx:if="{{currentView == 2}}">
+    <view>收藏栏</view>
+    <view wx:for="{{userclooection}}" class="publish"> </view>
+</view>
+<view wx:if="{{currentView == 3}}">
+    <view>浏览记录</view>
+    <view wx:for="{{history}}" class="publish"></view>
+</view>

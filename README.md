@@ -1,7 +1,7 @@
 # hust软件工程
 
 ## 简介
-云数据库需要使用 `book` `user` `user_recore` 三个表
+云数据库需要使用 `book` `user` `chat_record` 三个表
 
 ## 开始使用
 更新 app.js中的云环境id为自己本地的云环境id

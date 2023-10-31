@@ -16,13 +16,6 @@
     </view>
 </view>
 
-<!-- <view class="label-list">
-    <view class="label">确认密码</view>
-    <view class="input-box">
-        <input placeholder-class="place" type="text" placeholder="确认密码" bindinput="confirmUserPassword"/>
-    </view>
-</view> -->
-
 
 <button bindtap="login" type="primary" class="buttonType">登录</button>
 

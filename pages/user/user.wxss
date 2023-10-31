@@ -61,7 +61,7 @@
 .flex-container {
   display: flex;
   justify-content: space-between;
-  margin: 20rpx 50rpx 75rpx 75rpx;
+  margin: 20rpx 50rpx 50rpx 50rpx;
 }
 
 .flex-item {

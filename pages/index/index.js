@@ -67,5 +67,9 @@ Page({
 
     onBookNameTap(){
       console.log('skadl...');
+    },
+
+    onSearchButtonClick(){
+      console.log('skadl..sadsda.');
     }
 })

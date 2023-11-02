@@ -1,1 +1,96 @@
 /* pages/index/index.wxss */
+.fillwidth {
+  display: flex;
+  height:180rpx;
+  width:  750rpx;
+}
+.headFont {
+  display:  flex;
+  width:750rpx;
+  height: 0rpx;
+  text-align: center;
+  justify-content: center;
+  /*align-items: center;*/
+  font-size:  50rpx;
+}
+.search-background {
+  display: flex;
+  height:200rpx; /* 可以设置容器的高度以确定垂直居中的效果 */
+  width:750rpx;
+  
+  justify-content: center;
+  /*align-items: center; /* 这将使内容垂直居中 */
+}
+
+.logo {
+  width: 20rpx; /* 圆环标志的宽度 */
+  height: 20rpx; /* 圆环标志的高度 */
+  background-color: #fff; /* 圆环标志的背景颜色 */
+  border-radius: 50%; /* 圆环标志的圆角 */
+  margin-right: 10px; /* 右侧留出一些间距 */
+  /* 这里可以添加更多样式来自定义圆环标志的外观 */
+}
+.search-container {
+  display: flex;
+  background-color: #333; /* 设置深色背景 */
+  padding: 20rpx; /* 添加一些内边距以增加可读性 */
+  width: 600rpx;
+  height: 35rpx;
+  align-items: center;
+}
+input {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+.search-button {
+  background-color:rgb(71, 69, 69); /* 设置按钮的背景颜色 */
+  color:white; /* 设置按钮文字颜色 */
+  border: none; /* 去除按钮边框 */
+  padding: 10rpx 10rpx; /* 设置按钮内边距 */
+  border-radius: 10rpx; /* 设置按钮圆角 */
+}
+.active-button {
+  background-color: #8b8b8b; /* 按钮被点击时的背景颜色 */
+}
+.hot-books {
+  display: flex;
+  height:400rpx;
+  width:750rpx;
+  justify-content: center;
+}
+.books-block{
+  width: 600rpx; /* 可根据需要设置宽度 */
+  height: 490rpx; /* 可根据需要设置高度 */
+  background-color: #fff; /* 设置背景颜色，可根据需要调整 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
+  padding: 10px; /* 可根据需要设置内边距 */
+  text-align: center; /* 文本居中显示 */
+  /* 其他样式，如文本颜色等，可以根据需要自定义 */
+}
+
+.book {
+  display: flex;
+  height:150rpx;
+  width: 600rpx;
+  /* 可以根据需要设置内边距、边框、样式等 */
+}
+image {
+  width: 130rpx;
+  height: 150rpx;
+}
+.bookimage {
+  height:150rpx;
+  width:130rpx;
+}
+.bookinfo {
+  display:block;
+  height:150rpx;
+  width:450rpx;
+}
+
+.clickable-text {
+  color: blue; /* 设置文本颜色为蓝色 */
+  text-decoration: underline; /* 添加下划线效果 */
+  cursor: pointer; /* 鼠标悬停时显示手型光标，增加可点击感知 */
+}

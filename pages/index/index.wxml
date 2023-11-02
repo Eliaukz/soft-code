@@ -1,2 +1,90 @@
 <!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<view class="fillwidth">
+  <text class="headFont">
+    海量好书，等你来寻
+  </text>
+</view>
+<view class="search-background">
+  <view class="search-container">
+    <view class="logo"></view>
+    <view style="width: 500rpx;height: 50rpx;">
+    <input 
+      type="text" 
+      placeholder="Type here to search" 
+      bindinput="onInput" 
+      bindconfirm="onConfirm"
+    />
+    </view>
+    <view style="display: flex; justify-content:flex-end;width:120rpx;">
+      <view>
+        <button class="search-button" bindtap="onSearchButtonClick" hover-class="active-button" style="width: 120rpx;">搜索</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="fillwidth">
+  <text class="headFont">
+    本日热门
+  </text>
+</view>
+
+<view class="hot-books">
+  <view class="books-block">
+    <!-- 书籍1 -->
+    <view class="book">
+      <view class="bookimage">
+        <image src="/images/index/book1.jpg">
+        </image>
+      </view>
+      <view class="bookinfo">
+        <view style="font-size:35rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+          <text class="clickable-text" bindtap="onBookNameTap">这是一个书名</text>
+        </view>
+        <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+          <text>这是书名信息</text>
+        </view>
+      </view>
+      <!-- 其他信息 -->
+    </view>
+
+    <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+      <view style="background-color: gray;height:5rpx;width:100%;"></view>
+    </view>
+    
+    <view class="book">
+      <view class="bookimage">
+        <image src="/images/index/book1.jpg">
+        </image>
+      </view>
+      <view class="bookinfo">
+        <view style="font-size:35rpx;text-indent:20rpx;width:450rpx;text-align:left;">
+          <text class="clickable-text" bindtap="onBookNameTap">这是一个书名</text>
+        </view>
+        <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+          <text>这是书名信息</text>
+        </view>
+      </view>
+      <!-- 其他信息 -->
+    </view>
+
+    <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+      <view style="background-color: gray;height:5rpx;width:100%;"></view>
+    </view>
+
+    <view class="book">
+      <view class="bookimage">
+        <image src="/images/index/book1.jpg">
+        </image>
+      </view>
+      <view class="bookinfo">
+        <view style="font-size:35rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+          <text class="clickable-text" bindtap="onBookNameTap">这是一个书名</text>
+        </view>
+        <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+          <text>这是书名信息</text>
+        </view>
+      </view>
+      <!-- 其他信息 -->
+    </view>
+  </view>
+</view>

@@ -43,15 +43,22 @@ input {
   border: none;
   color: #fff;
 }
-
+.search-button {
+  background-color:rgb(71, 69, 69); /* 设置按钮的背景颜色 */
+  color:white; /* 设置按钮文字颜色 */
+  border: none; /* 去除按钮边框 */
+  padding: 10rpx 10rpx; /* 设置按钮内边距 */
+  border-radius: 10rpx; /* 设置按钮圆角 */
+}
+.active-button {
+  background-color: #8b8b8b; /* 按钮被点击时的背景颜色 */
+}
 .hot-books {
   display: flex;
   height:400rpx;
   width:750rpx;
   justify-content: center;
 }
-
-
 .books-block{
   width: 600rpx; /* 可根据需要设置宽度 */
   height: 490rpx; /* 可根据需要设置高度 */

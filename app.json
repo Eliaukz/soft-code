@@ -6,7 +6,8 @@
     "pages/friends/friends",
     "pages/chat/chat",
     "pages/register/register",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

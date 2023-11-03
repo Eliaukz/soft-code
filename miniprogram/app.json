@@ -10,7 +10,9 @@
     "pages/user/user",
     "pages/message/message",
     "pages/chat/chat",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/search/search",
+    "pages/book/book"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

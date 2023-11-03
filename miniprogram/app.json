@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/list/index",
+    "pages/add/index",
+    "pages/file/index",
+    "pages/edit/index",
+    "pages/detail/index",
+    "pages/user/user",
+    "pages/message/message",
+    "pages/index/index",
+    "pages/chat/chat",
+    "pages/register/register",
+    "pages/login/login"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发待办",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "tabBar": {
+    "color": "#9c9d9b",
+    "backgroundColor": "#fff",
+    "selectedColor": "#0A44DF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "images/icon/index.png",
+        "selectedIconPath": "images/icon/index.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/icon/message.png",
+        "selectedIconPath": "images/icon/message.png"
+      },
+      {
+        "pagePath": "pages/list/index",
+        "text": "库存",
+        "iconPath": "images/icon/friends.png",
+        "selectedIconPath": "images/icon/friends.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "iconPath": "images/icon/user.png",
+        "selectedIconPath": "images/icon/user.png"
+      }
+    ]
+  }
+}

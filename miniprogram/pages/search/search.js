@@ -11,39 +11,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    booklist: [
-      {
-        name: "英语",
-        info: "描述信息",
-        src: "/images/index/book1.jpg",
-      },
-      {
-        name: "英语",
-        info: "描述信息",
-        src: "/images/index/book1.jpg",
-      },
-      
-    ],
+    booklist: null,
   },
 
-    search(info) {
-        console.log(info);
+  search(info) {
+    let that = this;
+    console.log("search", info);
     db.collection("todo")
       .where({
         title: db.RegExp({
-          regexp: info, //miniprogram做为关键字进行匹配
+          regexp: toString(info), //info坐为关键字进行匹配
           options: "i", //不区分大小写
         }),
+        // freq: 1,
       })
-      .get()
-      .try((res) => {
-        this.setData({
-          booklist: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
+      .get({
+        success: (res) => {
+          console.log("res", res);
+          that.setData({
+            booklist: res.data,
+          });
+        },
+        fail: (err) => {
+          console.log("查询失败",err);
+        },
       });
+
+    console.log(this.data.booklist);
   },
 
   /**

@@ -9,15 +9,15 @@
                 <!-- 书籍 -->
                 <view class="book">
                     <view class="bookimage">
-                        <image src="{{item.src}}">
+                        <image src="{{item.files}}">
                         </image>
                     </view>
                     <view class="bookinfo">
                         <view style="font-size:35rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
-                            <text class="clickable-text" bindtap="onBookNameTap">{{item.name}}</text>
+                            <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
                         </view>
                         <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
-                            <text>{{item.info}}</text>
+                            <text>{{item.desc}}</text>
                         </view>
                     </view>
                     <!-- 其他信息 -->

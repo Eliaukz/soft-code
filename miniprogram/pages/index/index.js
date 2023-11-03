@@ -52,10 +52,12 @@ Page({
   },
 
   onSearchButtonClick(e) {
-    console.log(this.data.book_name);
-    wx.navigateTo({
-      url: "/pages/search/search?name=" + this.data.book_name,
-    });
+    //console.log(this.data.book_name);
+    if (this.data.book_name != "") {
+      wx.navigateTo({
+        url: "/pages/search/search?name=" + this.data.book_name,
+      });
+    }
   },
   onInput(e) {
     this.setData({

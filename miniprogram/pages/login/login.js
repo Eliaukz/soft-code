@@ -38,7 +38,7 @@ Page({
             app.globalData.userInfo = res.data[0];
             wx.setStorageSync("userInfo", res.data[0]);
             wx.switchTab({
-              url: "/pages/message/message",
+              url: "/pages/index/index",
               success(res) {
                 wx.showToast({
                   title: "登陆成功",

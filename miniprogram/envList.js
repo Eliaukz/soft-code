@@ -1,5 +1,5 @@
 const envList = [{
-    "envId": 'test-1-4guc8wbradc95068'
+    "envId": 'cloud1-1gm82cvd1dfb220a'
 }]
 module.exports = {
     envList

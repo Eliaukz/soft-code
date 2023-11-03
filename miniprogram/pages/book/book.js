@@ -1,16 +1,20 @@
-// pages/index/index.js
+// pages/book/book.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    book_name: null,
+        id: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) {
+    this.setData({
+      id: options.id,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -46,22 +50,4 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage() {},
-
-  onBookNameTap() {
-    console.log("skadl...");
-  },
-
-  onSearchButtonClick(e) {
-    //console.log(this.data.book_name);
-    if (this.data.book_name != "") {
-      wx.navigateTo({
-        url: "/pages/search/search?name=" + this.data.book_name,
-      });
-    }
-  },
-  onInput(e) {
-    this.setData({
-      book_name: e.detail.value,
-    });
-  },
 });

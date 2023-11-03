@@ -37,11 +37,12 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "showES6CompileOption": false
+    "showES6CompileOption": false,
+    "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
-  "appid": "wx4d928a98402894a0",
+  "appid": "wxc3b8f4726c97cfe4",
   "projectname": "TodoList",
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",

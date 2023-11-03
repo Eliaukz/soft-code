@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/index/index",
     "pages/list/index",
     "pages/add/index",
     "pages/file/index",
@@ -7,10 +9,8 @@
     "pages/detail/index",
     "pages/user/user",
     "pages/message/message",
-    "pages/index/index",
     "pages/chat/chat",
-    "pages/register/register",
-    "pages/login/login"
+    "pages/register/register"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,5 +1,5 @@
 const app = getApp()
-
+const db=wx.cloud.database()
 Page({
     data: {
         userInfo: null,
@@ -23,7 +23,7 @@ Page({
     },
     loadUser() {
         var that = this;
-        wx.cloud.database().collection('user').where({
+        db.collection('user').where({
             account_id : that.data.userInfo.account_id,
             password: that.data.userInfo.password
         }).get({
@@ -43,7 +43,7 @@ Page({
         // 获取所有成功添加好友的朋友
         var that = this;
         const DB = wx.cloud.database().command;
-        wx.cloud.database().collection('chat_record').where(
+        db.collection('chat_record').where(
             DB.or([
                 {
                     userA_id: app.globalData.userInfo._id,

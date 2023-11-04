@@ -104,9 +104,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    pages++;
-    console.log(this.data.searchinfo);
-    this.search(this.data.searchinfo);
+    // pages++;
+    // console.log(this.data.searchinfo);
+    // this.search(this.data.searchinfo);
   },
 
   /**
@@ -116,5 +116,11 @@ Page({
 
   onBookNameTap() {
     console.log("skadl...");
+  },
+  ondetail(e) {
+    console.log("tobook", e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: "/pages/book/book?id=" + e.currentTarget.dataset.id,
+    });
   },
 });

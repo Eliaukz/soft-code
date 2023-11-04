@@ -1,10 +1,7 @@
 <!--pages/search/search.wxml-->
-<!--pages/search/search.wxml-->
-
-
 <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
     <view wx:for="{{booklist}}">
-        <view class="hot-books">
+        <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
             <view class="books-block">
                 <!-- 书籍 -->
                 <view class="book">

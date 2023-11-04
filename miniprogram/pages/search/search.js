@@ -5,7 +5,7 @@ const app = getApp();
 
 const utils = require("../../utils/util");
 const db = wx.cloud.database();
-
+let pages = 0;
 Page({
   /**
    * 页面的初始数据
@@ -18,7 +18,6 @@ Page({
   search(info) {
     let that = this;
     let _ = db.command;
-    console.log("search", info);
     db.collection("todo")
       .where(
         _.and([
@@ -35,7 +34,6 @@ Page({
         success: (res) => {
           console.log("res", res);
           that.setData({
-            searchinfo: info,
             booklist: res.data,
           });
           console.log(this.data.booklist);
@@ -50,7 +48,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log("options", options.name);
+    this.pages = 0;
+    this.setData({
+      searchinfo: options.name,
+    });
     this.search(options.name);
   },
 
@@ -80,7 +81,7 @@ Page({
   onPullDownRefresh() {
     console.log("下拉刷新");
     this.onRefresh();
-    this.search(searchinfo);
+    this.search(this.searchinfo);
   },
   //下拉刷新动画
   onRefresh: function () {
@@ -102,7 +103,11 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {},
+  onReachBottom() {
+    pages++;
+    console.log(this.data.searchinfo);
+    this.search(this.data.searchinfo);
+  },
 
   /**
    * 用户点击右上角分享

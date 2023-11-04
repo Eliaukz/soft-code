@@ -11,40 +11,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    booklist: null,
+    booklist: [],
   },
 
   search(info) {
     let that = this;
+    let _=db.command;
     console.log("search", info);
     db.collection("todo")
-      .where({
-        title: db.RegExp({
-          regexp: toString(info), //info坐为关键字进行匹配
-          options: "i", //不区分大小写
-        }),
-        // freq: 1,
-      })
+      .where(_.and([
+        {
+            title: db.RegExp({
+              regexp: info, //info坐为关键字进行匹配
+              options: 'i', //不区分大小写
+            })
+          },{  freq:1,}
+
+      ]) )
       .get({
         success: (res) => {
           console.log("res", res);
           that.setData({
             booklist: res.data,
           });
+          console.log(this.data.booklist);
         },
         fail: (err) => {
           console.log("查询失败",err);
         },
       });
 
-    console.log(this.data.booklist);
+   
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options.name);
+    console.log("options",options.name);
     this.search(options.name);
   },
 

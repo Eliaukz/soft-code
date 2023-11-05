@@ -41,7 +41,7 @@ Page({
           desc: todo.desc,
           files: todo.files,
           fileName,
-          freq: todo.freq
+          address: todo.address
         })
       })
     }

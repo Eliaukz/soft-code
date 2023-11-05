@@ -1,5 +1,7 @@
 /* 新增待办页面 */
 const app = getApp();
+var count = 0;
+const db = wx.cloud.database();
 Page({
   // 保存编辑中待办的
   data: {
@@ -33,7 +35,7 @@ Page({
   },
 
   // 上传新附件
-  async addFile() {
+  addFile() {
     // 限制附件个数
     if (this.data.files.length + 1 > getApp().globalData.fileLimit) {
       wx.showToast({
@@ -43,28 +45,104 @@ Page({
       });
       return;
     }
-    // 从会话选择文件
-    wx.chooseMessageFile({
-      count: 1,
-    }).then((res) => {
-      const file = res.tempFiles[0];
-      // 上传文件至云存储
-      getApp()
-        .uploadFile(file.name, file.path)
-        .then((res) => {
-          // 追加文件记录，保存其文件名、大小和文件 id
-          this.data.files.push({
-            name: file.name,
-            size: (file.size / 1024 / 1024).toFixed(2),
-            id: res.fileID,
-          });
-          // 更新文件显示
-          this.setData({
-            files: this.data.files,
-            fileName: this.data.fileName + file.name + " ",
-          });
-        });
+    let a = this;
+    wx.showActionSheet({
+      itemList: ["从相册中选择", "拍照"],
+      itemColor: "#f7982a",
+      success: function (e) {
+        //album:相册   //camera拍照
+        e.cancel ||
+          (0 == e.tapIndex
+            ? a.chooseWxImageShop("album")
+            : 1 == e.tapIndex && a.chooseWxImageShop("camera"));
+      },
     });
+
+    // // 从会话选择文件
+    // wx.chooseMessageFile({
+    //   count: 1,
+    // }).then((res) => {
+    //   const file = res.tempFiles[0];
+    //   // 上传文件至云存储
+    //   getApp()
+    //     .uploadFile(file.name, file.path)
+    //     .then((res) => {
+    //       // 追加文件记录，保存其文件名、大小和文件 id
+    //       this.data.files.push({
+    //         name: file.name,
+    //         size: (file.size / 1024 / 1024).toFixed(2),
+    //         id: res.fileID,
+    //       });
+    //       // 更新文件显示
+    //       this.setData({
+    //         files: this.data.files,
+    //         fileName: this.data.fileName + file.name + " ",
+    //       });
+    //     });
+    // });
+  },
+  //a：选择的类型  //album:相册   //camera拍照
+  chooseWxImageShop: function (a) {
+    var e = this;
+    wx.chooseMedia({
+      mediaType: ["image"],
+      sizeType: ["original", "compressed"],
+      sourceType: [a], //类型
+      count: 1,
+      success: function (a) {
+        if (a.tempFiles[0].size > 2097152) {
+          wx.showModal({
+            title: "提示",
+            content: "选择的图片过大，请上传不超过2M的图片",
+            showCancel: !1,
+            success: function (a) {
+              a.confirm;
+            },
+          });
+        } else {
+          //把图片上传到服务器
+          e.upload_file(a.tempFiles[0].tempFilePath);
+        }
+      },
+    });
+  },
+  upload_file: function (e) {
+    console.log(e);
+    var that = this;
+    wx.showLoading({
+      title: "上传中",
+    });
+    wx.cloud.uploadFile({
+      filePath: e, //图片路径
+      cloudPath: app.globalData.userInfo.account_id + Date.now() + ".png",
+    }).then(res=>{
+        this.data.files.push({
+          id: res.fileID,
+          name:res.filePath,
+          size: (res.size / 1024 / 1024).toFixed(2)
+        })
+        this.setData({
+          files: this.data.files,
+          fileName: this.data.fileName+' '
+        })
+        count += 1;
+        console.log(res.fileID);
+        wx.hideLoading();
+        wx.showToast({
+          title: "上传成功",
+          icon: "success",
+          duration: 1000,
+        });
+      }).catch(error=>{
+        console.log(error)
+        wx.hideLoading();
+        wx.showToast({
+          title: "上传失败",
+          icon: "none",
+          duration: 3000,
+        });
+      },
+    );
   },
   onPriceInput(e) {
     this.setData({
@@ -74,7 +152,7 @@ Page({
   // 响应事件状态选择器
   onChooseAddress(e) {
     this.setData({
-      freq: e.detail.value,
+      address: e.detail.value,
     });
   },
 

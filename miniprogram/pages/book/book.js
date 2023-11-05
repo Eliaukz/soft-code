@@ -14,7 +14,7 @@ Page({
       userInfo:null,
     id: '',
     bookInfo: null,
-    ownerid: null, // 保存书籍所有者的id
+    owner: null, // 保存书籍所有者的id
     title: '', // 保存书名
     files: [], //书的图片
     desc: '', // 保存描述

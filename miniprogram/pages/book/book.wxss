@@ -1,23 +1,56 @@
 /* pages/book/book.wxss */
 
 .books-card {
-
   display: flex;
   height:160rpx;
   width:750rpx;
   justify-content: center;
 }
 
+@keyframes moveAnimationTitle {
+  0% { transform: translateX(500rpx); } /* 开始位置*/
+  50% { transform: translateX(300rpx); } /* 中间位置 */
+  100% { transform: translateX(0); } /* 结束位置， */
+}
+
+@keyframes moveAnimationPrice {
+  0% { transform: translateX(-500rpx); } /* 开始位置 */
+  50% { transform: translateX(-300rpx); } /* 中间位置*/
+  100% { transform: translateX(0); } /* 结束位置*/
+}
+
+@keyframes moveAnimationAddress {
+  0% { transform: translateX(500rpx); } /* 开始位置*/
+  50% { transform: translateX(300rpx); } /* 中间位置*/
+  100% { transform: translateX(0); } /* 结束位置*/
+}
+
+
+@keyframes moveAnimationDetail {
+  0% { transform: translateX(-500rpx); } /* 开始位置*/
+  50% { transform: translateX(-300rpx); } /* 中间位置*/
+  100% { transform: translateX(0); } /* 结束位置 */
+}
+
+
+
 .books-block{
   display: flex; /* 设置为水平布局容器 */
   width: 700rpx; /* 可根据需要设置宽度 */
   height: 100rpx; /* 可根据需要设置高度 */
-  background-color: rgb(44, 218, 10); /* 设置背景颜色，可根据需要调整 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
+  /*background-color: rgba(176, 231, 190); /* 设置背景颜色，可根据需要调整 */
+  background: linear-gradient(to bottom, #87CEEB, #ffffff);
+
+  /*box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
+  box-shadow: 1rpx 1rpx 6rpx 0rpx rgba(0, 0, 0, 0.4) inset;
+
   padding: 20rpx; /* 可根据需要设置内边距 */
   text-align: center; /* 文本居中显示 */
-  /* 其他样式，如文本颜色等，可以根据需要自定义 */
+  border-radius: 40rpx; /* 圆角边框 */
+
 }
+
+
 
 .block-field{
   display: flex;

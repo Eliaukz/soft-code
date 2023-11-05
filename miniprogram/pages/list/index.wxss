@@ -43,18 +43,18 @@
   transform: translateY(5px);
 }
 
-.todo-info {
+.book-info {
   width: auto;
   margin-left: 10px;
   display: flex;
   flex-direction: column
 }
 
-.todo-info_title {
+.book-info_title {
   font-size: 17px;
 }
 
-.todo-info_desc {
+.book-info_desc {
   font-size: 17px;
   color: #BDBDBD;
 }
@@ -78,7 +78,7 @@
   margin-right: 22px;
 }
 
-.todo-info_title.done {
+.book-info_title.done {
   text-decoration: line-through;
   color: #8D8D8D;
 }

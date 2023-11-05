@@ -4,7 +4,7 @@ Page({
   // 保存展示待办的 _id 和详细信息
   data: {
     _id: '',
-    todo: {
+    book: {
       title: ''
     },
     freqOptions: ['未上架', '已上架'],
@@ -29,11 +29,11 @@ Page({
       }).get().then(res => {
         // 解包获得待办事项
         const {
-          data: [todo]
+          data: [book]
         } = res
         // 将数据保存到本地、更新显示
         this.setData({
-          todo
+          book
         })
       })
     }

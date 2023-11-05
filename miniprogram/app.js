@@ -2,7 +2,7 @@ App({
   globalData: {
     usrInfo: null,
     // 用于存储待办记录的集合名称
-    collection: "todo",
+    collection: "book",
     // 最大文件上传数量
     fileLimit: 4,
   },
@@ -14,9 +14,9 @@ App({
     }
     this.globalData = {
       // 用于存储待办记录的集合名称
-      collection: "todo",
+      collection: "book",
       // 最大文件上传数量
-      fileLimit: 2,
+      fileLimit: 4,
     };
   },
 

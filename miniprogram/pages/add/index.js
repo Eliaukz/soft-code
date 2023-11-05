@@ -119,7 +119,6 @@ Page({
         this.data.files.push({
           id: res.fileID,
           name: Date.now().toString(),
-          size: (res.size / 1024 / 1024).toFixed(2)
         })
         this.setData({
           files: this.data.files,
@@ -156,7 +155,7 @@ Page({
   },
 
   // 保存待办
-  async saveTodo() {
+  async savebook() {
     // 对输入框内容进行校验
     if (this.data.title === "") {
       wx.showToast({
@@ -206,7 +205,7 @@ Page({
   },
 
   // 重置所有表单项
-  resetTodo() {
+  resetbook() {
     this.setData({
       title: "",
       desc: "",

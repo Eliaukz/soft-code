@@ -57,7 +57,7 @@ Component({
                   : 1 == e.tapIndex && a.chooseWxImageShop("camera"));
             },
           });
-          console.log("弹出chooseMedia")
+          
         } catch {
           console.error('【选取文件失败】', e.toString())
         }
@@ -99,33 +99,58 @@ Component({
         filePath: e, //图片路径
         cloudPath: app.globalData.userInfo.account_id + Date.now() + ".png",
       }).then(res=>{
+        const fileID = res.fileID;
+        const fileName = Date.now().toString();
+         // 更新云数据库中的待办记录，将图片信息添加到 files 数组中
+        const db = wx.cloud.database();
+        const collection = db.collection(getApp().globalData.collection);
+        const _id = this.properties._id;
+        collection.doc(_id).update({
+          data: {
+            files: db.command.push({
+              id: fileID,
+              name: fileName
+            })
+          }
+        }).then(() => {
+          // 更新本地 data 中的 files 数组
           this.data.files.push({
-            id: res.fileID,
-            name:res.filePath,
-            size: (res.size / 1024 / 1024).toFixed(2)
-          })
+            id: fileID,
+            name: fileName,
+          });
           this.setData({
             files: this.data.files,
-            fileName: this.data.fileName+' '
-          })
+            fileName: fileName
+          });
           count += 1;
-          console.log(res.fileID);
+          console.log(fileID);
           wx.hideLoading();
+          wx.navigateBack({
+            delta: 0,
+          })
           wx.showToast({
             title: "上传成功",
             icon: "success",
             duration: 1000,
           });
-        }).catch(error=>{
-          console.log(error)
+        }).catch(error => {
+          console.log(error);
           wx.hideLoading();
           wx.showToast({
             title: "上传失败",
             icon: "none",
             duration: 3000,
           });
-        },
-      );
+        });
+      }).catch(error => {
+        console.log(error);
+        wx.hideLoading();
+        wx.showToast({
+          title: "上传失败",
+          icon: "none",
+          duration: 3000,
+        });
+      });
     }
   }
 })

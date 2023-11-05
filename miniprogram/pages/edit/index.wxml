@@ -35,9 +35,9 @@
       </picker>
     </view>
   </view>
-  <view class="delete" bindtap="deleteTodo">删除待办</view>
+  <view class="delete" bindtap="deletebook">删除待办</view>
   <view class="footer">
     <view class="cancel" bindtap="cancelEdit">取消</view>
-    <view class="save" bindtap="saveTodo">保存</view>
+    <view class="save" bindtap="savebook">保存</view>
   </view>
 </view>

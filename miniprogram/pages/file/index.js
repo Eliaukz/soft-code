@@ -18,14 +18,14 @@ Page({
       db.collection(getApp().globalData.collection).where({
         _id: this.data._id
       }).get().then(res => {
-        // 解包获得返回列表（应只匹配一项）中的 todo 对象
+        // 解包获得返回列表（应只匹配一项）中的 book 对象
         const {
-          data: [todo]
+          data: [book]
         } = res
-        if (todo !== undefined) {
-          // 存储查询得到 todo 对象中的文件列表
+        if (book !== undefined) {
+          // 存储查询得到 book 对象中的文件列表
           this.setData({
-            files: todo.files
+            files: book.files
           })
         }
       })

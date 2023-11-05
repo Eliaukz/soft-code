@@ -3,7 +3,7 @@
 Page({
   // 存储请求结果
   data: {
-    todos: [], // 用户的所有待办事项
+    books: [], // 用户的所有待办事项
     pending: [], // 未完成待办事项
     finished: [] // 已完成待办事项
   },
@@ -22,10 +22,10 @@ Page({
         // 存储查询到的数据
         this.setData({
           // data 为查询到的所有待办事项列表
-          todos: data,
+          books: data,
           // 通过 filter 函数，将待办事项分为未完成和已完成两部分
-          pending: data.filter(todo => todo.freq === 0),
-          finished: data.filter(todo => todo.freq === 1)
+          pending: data.filter(books => books.freq === 0),
+          finished: data.filter(books => books.freq === 1)
         })
       })
     })
@@ -50,21 +50,21 @@ Page({
       index
     } = e.detail
     // 根据序号获得待办对象
-    const todoIndex = e.currentTarget.dataset.index
-    const todo = this.data.pending[todoIndex]
+    const bookIndex = e.currentTarget.dataset.index
+    const book = this.data.pending[bookIndex]
     const db = await getApp().database()
     // 处理星标按钮点击事件
     if (index === 0) {
       // 根据待办的 _id 找到并反转星标标识
       db.collection(getApp().globalData.collection).where({
-        _id: todo._id
+        _id: book._id
       }).update({
         data: {
-          star: !todo.star
+          star: !book.star
         }
       })
       // 更新本地数据，触发显示更新
-      todo.star = !todo.star
+      book.star = !book.star
       this.setData({
         pending: this.data.pending
       })
@@ -73,17 +73,17 @@ Page({
     if (index === 1) {
       // 根据待办的 _id 找到并删除待办记录
       db.collection(getApp().globalData.collection).where({
-        _id: todo._id
+        _id: book._id
       }).remove()
       // 更新本地数据，快速更新显示
-      this.data.pending.splice(todoIndex, 1)
+      this.data.pending.splice(bookIndex, 1)
       this.setData({
         pending: this.data.pending
       })
       // 如果删除完所有事项，刷新数据，让页面显示无事项图片
       if (this.data.pending.length === 0 && this.data.finished.length === 0) {
         this.setData({
-          todos: [],
+          books: [],
           pending: [],
           finished: []
         })
@@ -92,14 +92,14 @@ Page({
   },
 
   // 点击左侧单选框时，切换待办状态
-  async finishTodo(e) {
+  async finishbook(e) {
     // 根据序号获得触发切换事件的待办
-    const todoIndex = e.currentTarget.dataset.index
-    const todo = this.data.pending[todoIndex]
+    const bookIndex = e.currentTarget.dataset.index
+    const book = this.data.pending[bookIndex]
     const db = await getApp().database()
     // 根据待办 _id，获得并更新待办事项状态
     db.collection(getApp().globalData.collection).where({
-      _id: todo._id
+      _id: book._id
     }).update({
       // freq == 1 表示待办已完成，不再提醒
       // freq == 0 表示待办未完成，每天提醒
@@ -108,46 +108,46 @@ Page({
       }
     })
     // 快速刷新数据
-    todo.freq = 1
+    book.freq = 1
     this.setData({
-      pending: this.data.todos.filter(todo => todo.freq === 0),
-      finished: this.data.todos.filter(todo => todo.freq === 1)
+      pending: this.data.books.filter(book => book.freq === 0),
+      finished: this.data.books.filter(book => book.freq === 1)
     })
   },
 
   // 同上一函数，将待办状态设置为未完成
-  async resetTodo(e) {
-    const todoIndex = e.currentTarget.dataset.index
-    const todo = this.data.finished[todoIndex]
+  async resetbook(e) {
+    const bookIndex = e.currentTarget.dataset.index
+    const book = this.data.finished[bookIndex]
     const db = await getApp().database()
     db.collection(getApp().globalData.collection).where({
-      _id: todo._id
+      _id: book._id
     }).update({
       data: {
         freq: 0
       }
     })
-    todo.freq = 0
+    book.freq = 0
     this.setData({
-      pending: this.data.todos.filter(todo => todo.freq === 0),
-      finished: this.data.todos.filter(todo => todo.freq === 1)
+      pending: this.data.books.filter(book => book.freq === 0),
+      finished: this.data.books.filter(book => book.freq === 1)
     })
   },
 
   // 跳转响应函数
   toFileList(e) {
-    const todoIndex = e.currentTarget.dataset.index
-    const todo = this.data.pending[todoIndex]
+    const bookIndex = e.currentTarget.dataset.index
+    const book = this.data.pending[bookIndex]
     wx.navigateTo({
-      url: '../file/index?id=' + todo._id,
+      url: '../file/index?id=' + book._id,
     })
   },
 
   toDetailPage(e) {
-    const todoIndex = e.currentTarget.dataset.index
-    const todo = this.data.pending[todoIndex]
+    const bookIndex = e.currentTarget.dataset.index
+    const book = this.data.pending[bookIndex]
     wx.navigateTo({
-      url: '../detail/index?id=' + todo._id,
+      url: '../detail/index?id=' + book._id,
     })
   },
 

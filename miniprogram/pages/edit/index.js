@@ -24,23 +24,23 @@ Page({
       db.collection(getApp().globalData.collection).where({
         _id: this.data._id
       }).get().then(res => {
-        // 解包获得 todo 对象
+        // 解包获得 book 对象
         const {
-          data: [todo]
+          data: [book]
         } = res
         // 循环拼接展示的文件列表名，文件名过长时截断
         let fileName = ''
-        for (let file of todo.files) {
+        for (let file of book.files) {
           fileName += file.name.substr(0, 10) + (file.name.length > 10 ? "..." : "") + " "
         }
         // 如果整体文件名字符串过长则整体截断
         fileName = fileName.substr(0, 20) + (fileName.length > 20 ? "..." : "")
         // 更新页面显示
         this.setData({
-          title: todo.title,
-          desc: todo.desc,
-          files: todo.files,
-          address: todo.address
+          title: book.title,
+          desc: book.desc,
+          files: book.files,
+          address: book.address
         })
       })
     }
@@ -79,7 +79,6 @@ Page({
         // 存储已上传的文件名、文件大小及其 id
         this.data.files.push({
           name: file.name,
-          size: (file.size / 1024 / 1024).toFixed(2),
           id: res.fileID
         })
         // 更新显示
@@ -99,7 +98,7 @@ Page({
   },
 
   // 删除待办事项
-  async deleteTodo() {
+  async deletebook() {
     const db = await getApp().database()
     // 根据待办 _id 删除待办事项
     db.collection(getApp().globalData.collection).where({
@@ -118,7 +117,7 @@ Page({
   },
 
   // 保存待办信息
-  async saveTodo() {
+  async savebook() {
     // 对输入框内容进行校验
     if (this.data.title === '') {
       wx.showToast({

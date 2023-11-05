@@ -118,12 +118,11 @@ Page({
     }).then(res=>{
         this.data.files.push({
           id: res.fileID,
-          name:res.filePath,
+          name: Date.now().toString(),
           size: (res.size / 1024 / 1024).toFixed(2)
         })
         this.setData({
           files: this.data.files,
-          fileName: this.data.fileName+' '
         })
         count += 1;
         console.log(res.fileID);

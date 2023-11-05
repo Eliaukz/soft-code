@@ -6,7 +6,7 @@ Page({
   data: {
     id: '',
     bookInfo: null,
-    ownerid: null, // 保存书籍所有者的id
+    owner: null, // 保存书籍所有者的id
     title: '', // 保存书名
     files: [], //书的图片
     desc: '', // 保存描述
@@ -61,7 +61,7 @@ Page({
         this.setData({
           title: res.data.title,
           bookInfo: res.data,
-          ownerid: res.data.ownerid,
+          owner: res.data.owner,
           files: res.data.files, //书的图片
           desc: res.data.desc, // 保存描述
           price: res.data.price, // 保存价格

@@ -1,5 +1,5 @@
 /* 文件列表页面 */
-
+const app = getApp();
 Page({
   // 存储显示的待办事项 _id 及其附件列表
   data: {
@@ -32,32 +32,18 @@ Page({
     }
   },
 
-  // 调用小程序 Api，下载并展示文件保存位置
-  downloadFile(e) {
-    // 获得触发下载的文件序号，并获得对应文件 id
+  // 调用小程序 Api，预览图片
+  async previewFile(e){
+    console.log("预览图片")
+    var self = this
     const index = e.currentTarget.dataset.index
-    const file = this.data.files[index]
-    // 调用接口从云存储下载文件
-    getApp().downloadFile(file.id).then(res => {
-      // 保存文件到本地，并展示文件位置
-      const {
-        tempFilePath
-      } = res
-      wx.saveFile({
-        tempFilePath
-      }).then(res => {
-        const {
-          savedFilePath
-        } = res
-        wx.showToast({
-          title: '文件已保存至：' + savedFilePath,
-          icon: 'none',
-          duration: 4000
-        })
-      })
-    }).catch(err => console.log(err))
+    console.log(index)
+    const db = await getApp().database()
+    const ImageUrl = this.data.files[index].id
+    wx.previewImage({
+      urls: [ImageUrl],
+    });
   },
-
   // 删除文件
   async deleteFile(e) {
     // 根据触发删除事件的文件序号，获取文件 id

@@ -16,7 +16,7 @@
     <view class="form-cell inline">
       <view>添加附件</view>
       <view class="upload-text" bindtap="addFile">
-        {{(files.length === 0 ? "点击添加附件" : util.filterStr(fileName, 15))}}
+        {{(files.length === 0 ? "点击添加附件" : "已添加")}}
       </view>
       <image class="upload" bindtap="addFile" src="../../images/add/next.png"></image>
     </view>

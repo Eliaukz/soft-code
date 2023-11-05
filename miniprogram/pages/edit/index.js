@@ -12,9 +12,9 @@ Page({
     addressOptions: ['沁苑', '紫菘', '韵苑'],
     address: 0
   },
-
   async onLoad(options) {
     // 根据上一页传来的 _id 值更新表单数据
+    console.log(options.id)
     if (options.id !== undefined) {
       this.setData({
         _id: options.id
@@ -40,8 +40,7 @@ Page({
           title: todo.title,
           desc: todo.desc,
           files: todo.files,
-          fileName,
-          freq: todo.freq
+          address: todo.address
         })
       })
     }

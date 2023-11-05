@@ -1,5 +1,5 @@
 <wxs module="util" src="../util.wxs" />
-<view class="container empty" wx:if="{{todos.length === 0}}">
+  <view class="container empty" wx:if="{{todos.length === 0}}">
   <image class="background" src="../../images/list/background.png" mode="aspectFit" />
   <view class="title">库存为空</view>
   <view class="subtitle">有可能出售的教材？赶紧放入库存吧！</view>

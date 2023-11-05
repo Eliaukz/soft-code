@@ -42,7 +42,7 @@ Page({
   },
 
   getBookInfo() {
-    wx.cloud.database().collection("todo").doc(this.data.id).get({
+    wx.cloud.database().collection("book").doc(this.data.id).get({
       success: (res) =>{
         console.log("OK!");
         console.log("data :",res.data);

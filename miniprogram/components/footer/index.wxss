@@ -6,7 +6,7 @@
   bottom: 0;
   display: flex;
   border-top: #E0E0E0 solid 1px;
-  background: white;
+  background:  #f6f6f6;
   z-index: 10;
 }
 

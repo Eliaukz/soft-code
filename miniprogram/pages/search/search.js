@@ -18,7 +18,7 @@ Page({
   search(info) {
     let that = this;
     let _ = db.command;
-    db.collection("todo")
+    db.collection("book")
       .where(
         _.and([
           {

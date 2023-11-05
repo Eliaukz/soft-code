@@ -1,1 +1,79 @@
 /* pages/book/book.wxss */
+
+.books-card {
+
+  display: flex;
+  height:160rpx;
+  width:750rpx;
+  justify-content: center;
+}
+
+.books-block{
+  display: flex; /* 设置为水平布局容器 */
+  width: 700rpx; /* 可根据需要设置宽度 */
+  height: 100rpx; /* 可根据需要设置高度 */
+  background-color: rgb(44, 218, 10); /* 设置背景颜色，可根据需要调整 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
+  padding: 20rpx; /* 可根据需要设置内边距 */
+  text-align: center; /* 文本居中显示 */
+  /* 其他样式，如文本颜色等，可以根据需要自定义 */
+}
+
+.block-field{
+  display: flex;
+  width: 250rpx;
+  height: 100rpx;
+  text-align:left;
+  justify-content:flex-start;
+  align-items:center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.field-info {  
+  display: flex;
+  width: 450rpx;
+  height: 100rpx;
+  text-align:center;
+  justify-content:center;
+  align-items:center;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.detail-field{
+  display: block;
+  width: 700rpx;
+  height: 80rpx;
+  text-align:center;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.detail-info {
+  width: 700rpx;
+  height: 420rpx;
+  font-size: 35rpx;
+  text-align:left;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 10rpx; /* 添加段前间距 */
+  margin-bottom: 10rpx; /* 添加段后间距 */
+  text-indent: 2em; /* 添加首行缩进 */
+}
+
+
+.custom-button {
+  background-color: #007BFF; /* 按钮背景颜色 */
+  color: #fff; /* 文本颜色 */
+  border: none; /* 去除边框 */
+  border-radius: 4px; /* 圆角边框 */
+  padding: 10px 20px; /* 内边距 */
+  font-size: 16px; /* 字体大小 */
+  cursor: pointer; /* 鼠标指针样式为手形 */
+  transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+}
+
+.custom-button:active {
+  background-color: #0056b3; /* 按钮被点击时的背景颜色 */
+  color: #fff; /* 按钮被点击时的文本颜色 */
+}

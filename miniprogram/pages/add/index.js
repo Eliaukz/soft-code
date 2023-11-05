@@ -118,7 +118,7 @@ Page({
           address: Number(this.data.address), // 地址
           freq: 0, // 是否上架
           star: false,
-          owner: this.data.owner._id,
+          owner: this.data.owner,
         },
       })
       .then(() => {

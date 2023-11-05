@@ -1,4 +1,5 @@
 <!--pages/search/search.wxml-->
+<wxs module="util" src="../util.wxs"/>
 <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
     <view wx:for="{{booklist}}">
         <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
@@ -14,7 +15,7 @@
                             <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
                         </view>
                         <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
-                            <text>{{item.desc}}</text>
+                            <text>{{util.filterStr(item.desc,30)}}</text>
                         </view>
                     </view>
                     <!-- 其他信息 -->

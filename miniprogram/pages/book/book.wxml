@@ -1,2 +1,62 @@
 <!--pages/book/book.wxml-->
-<text>pages/book/book.wxml</text>
+<!--
+<view class="book-info">
+  <text>dataid:{{id}}</text>
+  <text>书名：{{title}}</text>
+  <text>描述：{{desc}}</text>
+  <text>价格：{{price}}</text>
+  <text>地址：{{address}}</text>
+  <text>发布状态：{{freq === 1 ? '已发布' : '未发布'}}</text>
+  <text>星标特效标记：{{star === 1 ? '是' : '否'}}</text>
+</view>
+-->
+<view class="books-card">
+    <view class="books-block" style="animation: moveAnimationTitle 0.4s forwards">
+      <view class="block-field">
+        <text style="font-size:50rpx;">书名 :</text>
+      </view>
+      <view class="field-info">
+        <text style="font-size:40rpx;">{{title}}</text>
+      </view>
+    </view>
+</view>
+
+<view class="books-card">
+    <view class="books-block" style="background-color:rgb(21, 73, 34);animation: moveAnimationPrice 0.5s forwards">
+      <view class="block-field">
+        <text style="font-size:50rpx;">价格 :</text>
+      </view>
+      <view class="field-info">
+        <text style="font-size:40rpx;">{{price}}</text>
+      </view>
+    </view>
+</view>
+
+<view class="books-card">
+    <view class="books-block" style="background-color:rgb(176, 231, 190);animation: moveAnimationAddress 0.6s forwards">
+      <view class="block-field">
+        <text style="font-size:50rpx;">地址 :</text>
+      </view>
+      <view class="field-info">
+        <text style="font-size:40rpx;font-weight:bold;font-family:Verdana, Geneva, Tahoma, sans-serif">{{addressarr[address]}}</text>
+      </view>
+    </view>
+</view>
+
+<view class="books-card" style="height:700rpx">
+    <view class="books-block" style="background-color:rgb(234, 253, 205);height:600rpx;display:block;animation: moveAnimationDetail 0.7s forwards">
+      <view class="detail-field">
+        <text style="font-size:50rpx;">书本描述</text>
+      </view>
+      
+      <view class="detail-info">
+        <!--
+        <text style="font-size:35rpx;font-family:Verdana, Geneva, Tahoma, sans-serif">这是书本描述这是书本描述这是书本描</text>
+        -->
+        <text style="font-size:35rpx;font-family:Verdana, Geneva, Tahoma, sans-serif">{{desc}}</text>
+      </view>
+    </view>
+</view>
+<view>
+  <button class="custom-button" bindtap="onclickButton">点击我</button>
+</view>

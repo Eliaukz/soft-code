@@ -2,6 +2,7 @@ const app = getApp();
 
 const utils = require("../../utils/util");
 const db = wx.cloud.database();
+
 Page({
   data: {
     inputValue: "",
@@ -10,7 +11,8 @@ Page({
     userInfo: null,
   },
 
-  onLoad: function (options) {
+  onLoad (options) {
+      console.log("chat",  options.id)
     this.setData({
       recordId: options.id,
       userInfo: app.globalData.userInfo,
@@ -36,9 +38,7 @@ Page({
       .doc(that.data.recordId)
       .get({
         success(res) {
-         
           var record = res.data.record;
-
           var msg = {};
           msg.id = app.globalData.userInfo._id;
           msg.text = that.data.inputValue;

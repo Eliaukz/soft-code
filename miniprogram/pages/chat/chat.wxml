@@ -17,7 +17,7 @@
             </view>
         </block>
     </view>
-    <view id="toView" class="test"></view>
+
 </scroll-view>
 
 <view class="pub-comment">

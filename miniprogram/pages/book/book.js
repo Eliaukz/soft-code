@@ -6,6 +6,7 @@ const utils = require("../../utils/util");
 
 const db = wx.cloud.database();
 const _ = db.command;
+
 Page({
   /**
    * 页面的初始数据
@@ -23,6 +24,7 @@ Page({
     address: 0, // 保存地址
     freq: 0, // 保存发布状态
     star: 0, // 保存星标特效标记
+    recordid:'',//记录对话id
   },
 
   /**
@@ -36,41 +38,19 @@ Page({
       id: options.id,
     });
     this.getBookInfo();
+
   },
-  /*
-  getBookInfo() {
-    // 调用云函数来查询书籍信息
-    console.log("getBookInfo function :: ",this.data.id),
-    wx.cloud.callFunction({
-      name: 'getBookById',
-      data: {
-        bookId: this.data.id
-      },
-      complete: res => {
-        console.log("OK");
-        console.log("res.num :: ",res);
-        
-        /*
-        this.setData({
-          title:res.data
-        });
-        
-      },
-      fail: err => {
-        console.error(err);
-      },
-    });
-  },
-  */
+
   getBookInfo() {
     wx.cloud.database().collection("todo").doc(this.data.id).get({
       success: (res) =>{
         console.log("OK!");
+        console.log("data :",res.data);
         console.log("title :",res.data.title);
         this.setData({
           title: res.data.title,
           bookInfo: res.data,
-          ownerid: res.data.owner,
+          owner: res.data.owner,
           files: res.data.files, //书的图片
           desc: res.data.desc, // 保存描述
           price: res.data.price, // 保存价格
@@ -102,162 +82,50 @@ Page({
     }
   },
 
-  acceptNewFriend( ) {
-  console.log(this.data.ownerid);
-    var that = this;
-    db.collection("chat_record")
-     // .doc(that.data.new_friends[index]._id)
-     .doc(this.data.ownerid)
-      .update({
-        data: {
-          friend_status: true,
-        },
-        success(res) {
-          that.setData({
-            //new_accepted_friend_id: that.data.new_friends[index].userA_id,
-            new_accepted_friend_id:this.data.ownerid    ////
-          });
-        },
-      });
-      console.log("成为好友")
-    // AB成为朋友
-
-    db.collection("user")
-      .where({
-         _id: that.data.userInfo._id,
-      })  //查询当前用户
-      .get({
-        success(res) {
-          console.log(res.data);
-          var my_friends = res.data[0].friends;
-          my_friends.push(this.data.ownerid)
-        //   my_friends.push(that.data.new_friends[index].userA_id);
-          app.globalData.userInfo.friends = my_friends;
-          db.collection("user")
-            .where({
-              _id: that.data.userInfo._id,
-            })
-            .update({
-              data: {
-                friends: my_friends,
-              },
-            });
-        },
-      });
-
-    db.collection("user")
-      .where({
-       // _id: that.data.new_friends[index].userA_id,
-        _id:this.data.ownerid
-      })
-      .get({
-        success(res) {
-          //console.log(res)
-          var A_friends = res.data[0].friends;
-          A_friends.push(that.data.userInfo._id);
-          db.collection("user")
-            .where({
-            //   _id: that.data.new_friends[index].userA_id,
-            _id:this.data.ownerid
-            })
-            .update({
-              data: {
-                friends: A_friends,
-              },
-            });
-          that.onShow();
-        },
-      });
-  },
-
-
   addFriend() {
-
     var that = this;
-
     db.collection("chat_record").add({
       data: {
         userA_id: that.data.userInfo._id,
         userA_account_id: that.data.userInfo.account_id,
         userA_avatarUrl: that.data.userInfo.avatarUrl,
 
-        userB_id:this.data.ownerid._id,
-        userB_account_id:this.data.ownerid.account_id,
-        userB_avatarUrl : this.data.ownerid.avatarUrl,
+        userB_id:this.data.owner._id,
+        userB_account_id:this.data.owner.account_id,
+        userB_avatarUrl : this.data.owner.avatarUrl,
 
         record: [],
         friend_status: true,
         time: utils.formatTime(new Date()),
       },
-      success(res) {
-        console.log(res);
-
-      },
-    });
-
-    db.collection("user")
-    .where({
-       _id: that.data.userInfo._id,
-    })  //查询当前用户
-    .get({
-      success(res) {
-        console.log(res.data);
-        var my_friends = res.data[0].friends;
-        my_friends.push(this.data.ownerid)
-      //   my_friends.push(that.data.new_friends[index].userA_id);
-        app.globalData.userInfo.friends = my_friends;
-        db.collection("user")
-          .where({
-            _id: that.data.userInfo._id,
+      success: function(res) {
+          that.setData({
+              recordid:res._id
           })
-          .update({
-            data: {
-              friends: my_friends,
-            },
-          });
+        console.log('插入成功', res._id)
+        console.log(that.data.recordid)
+        wx.navigateTo({
+            url: "/pages/chat/chat?id=" + that.data.recordid,
+        });
+
       },
+      fail: function(err) {
+        console.error('插入失败', err);
+      }
     });
-
-  db.collection("user")
-    .where({
-     // _id: that.data.new_friends[index].userA_id,
-      _id:this.data.ownerid
-    })
-    .get({
-      success(res) {
-        //console.log(res)
-        var A_friends = res.data[0].friends;
-        A_friends.push(that.data.userInfo._id);
-        db.collection("user")
-          .where({
-          //   _id: that.data.new_friends[index].userA_id,
-          _id:this.data.ownerid
-          })
-          .update({
-            data: {
-              friends: A_friends,
-            },
-          });
-        that.onShow();
-      },
-    });
-
-
 
 
   },
 
 
+   onclickButton() {
 
-
-  
-  onclickButton() {
-    console.log("跳转到chat" ,this.data.ownerid);
     this.addFriend()
-    console.log("加好友成功")
-    wx.navigateTo({
-      url: "/pages/chat/chat?id=" +this.data.ownerid,
-    });
+    // console.log("this.  " ,this.data.recordid)
+    
+    // wx.navigateTo({
+    // url: "/pages/chat/chat?id=" + this.data.recordid,
+    // });
   },
 
   /**

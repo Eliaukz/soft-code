@@ -11,7 +11,8 @@ Page({
     userInfo: null,
   },
 
-  onLoad: function (options) {
+  onLoad (options) {
+      console.log("chat",  options.id)
     this.setData({
       recordId: options.id,
       userInfo: app.globalData.userInfo,

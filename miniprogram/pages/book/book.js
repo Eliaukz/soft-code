@@ -1,9 +1,17 @@
 // pages/book/book.js
+
+const app = getApp();
+
+const utils = require("../../utils/util");
+
+const db = wx.cloud.database();
+const _ = db.command;
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+      userInfo:null,
     id: '',
     bookInfo: null,
     ownerid: null, // 保存书籍所有者的id
@@ -21,11 +29,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    //console.log(options.id);
+    this.setData({
+        userInfo: app.globalData.userInfo,
+      });
     this.setData({
       id: options.id,
     });
-    //this.getBookInfo();
     this.getBookInfo();
   },
   /*
@@ -61,7 +70,7 @@ Page({
         this.setData({
           title: res.data.title,
           bookInfo: res.data,
-          ownerid: res.data.ownerid,
+          ownerid: res.data.owner,
           files: res.data.files, //书的图片
           desc: res.data.desc, // 保存描述
           price: res.data.price, // 保存价格
@@ -91,6 +100,164 @@ Page({
       console.log('发布状态:', this.data.freq === 1 ? '已发布' : '未发布');
       console.log('星标特效标记:', this.data.star === 1 ? '是' : '否');
     }
+  },
+
+  acceptNewFriend( ) {
+  console.log(this.data.ownerid);
+    var that = this;
+    db.collection("chat_record")
+     // .doc(that.data.new_friends[index]._id)
+     .doc(this.data.ownerid)
+      .update({
+        data: {
+          friend_status: true,
+        },
+        success(res) {
+          that.setData({
+            //new_accepted_friend_id: that.data.new_friends[index].userA_id,
+            new_accepted_friend_id:this.data.ownerid    ////
+          });
+        },
+      });
+      console.log("成为好友")
+    // AB成为朋友
+
+    db.collection("user")
+      .where({
+         _id: that.data.userInfo._id,
+      })  //查询当前用户
+      .get({
+        success(res) {
+          console.log(res.data);
+          var my_friends = res.data[0].friends;
+          my_friends.push(this.data.ownerid)
+        //   my_friends.push(that.data.new_friends[index].userA_id);
+          app.globalData.userInfo.friends = my_friends;
+          db.collection("user")
+            .where({
+              _id: that.data.userInfo._id,
+            })
+            .update({
+              data: {
+                friends: my_friends,
+              },
+            });
+        },
+      });
+
+    db.collection("user")
+      .where({
+       // _id: that.data.new_friends[index].userA_id,
+        _id:this.data.ownerid
+      })
+      .get({
+        success(res) {
+          //console.log(res)
+          var A_friends = res.data[0].friends;
+          A_friends.push(that.data.userInfo._id);
+          db.collection("user")
+            .where({
+            //   _id: that.data.new_friends[index].userA_id,
+            _id:this.data.ownerid
+            })
+            .update({
+              data: {
+                friends: A_friends,
+              },
+            });
+          that.onShow();
+        },
+      });
+  },
+
+
+  addFriend() {
+
+    var that = this;
+
+    db.collection("chat_record").add({
+      data: {
+        userA_id: that.data.userInfo._id,
+        userA_account_id: that.data.userInfo.account_id,
+        userA_avatarUrl: that.data.userInfo.avatarUrl,
+
+        userB_id:this.data.ownerid._id,
+        userB_account_id:this.data.ownerid.account_id,
+        userB_avatarUrl : this.data.ownerid.avatarUrl,
+
+        record: [],
+        friend_status: true,
+        time: utils.formatTime(new Date()),
+      },
+      success(res) {
+        console.log(res);
+
+      },
+    });
+
+    db.collection("user")
+    .where({
+       _id: that.data.userInfo._id,
+    })  //查询当前用户
+    .get({
+      success(res) {
+        console.log(res.data);
+        var my_friends = res.data[0].friends;
+        my_friends.push(this.data.ownerid)
+      //   my_friends.push(that.data.new_friends[index].userA_id);
+        app.globalData.userInfo.friends = my_friends;
+        db.collection("user")
+          .where({
+            _id: that.data.userInfo._id,
+          })
+          .update({
+            data: {
+              friends: my_friends,
+            },
+          });
+      },
+    });
+
+  db.collection("user")
+    .where({
+     // _id: that.data.new_friends[index].userA_id,
+      _id:this.data.ownerid
+    })
+    .get({
+      success(res) {
+        //console.log(res)
+        var A_friends = res.data[0].friends;
+        A_friends.push(that.data.userInfo._id);
+        db.collection("user")
+          .where({
+          //   _id: that.data.new_friends[index].userA_id,
+          _id:this.data.ownerid
+          })
+          .update({
+            data: {
+              friends: A_friends,
+            },
+          });
+        that.onShow();
+      },
+    });
+
+
+
+
+  },
+
+
+
+
+  
+  onclickButton() {
+    console.log("跳转到chat" ,this.data.ownerid);
+    this.addFriend()
+    console.log("加好友成功")
+    wx.navigateTo({
+      url: "/pages/chat/chat?id=" +this.data.ownerid,
+    });
   },
 
   /**

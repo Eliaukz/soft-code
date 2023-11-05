@@ -58,5 +58,5 @@
     </view>
 </view>
 <view>
-  <button class="custom-button",bindtap="clickButton">点击我</button>
+  <button class="custom-button" bindtap="onclickButton">点击我</button>
 </view>

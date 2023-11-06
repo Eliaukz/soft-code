@@ -14,6 +14,7 @@ Page({
     freq: 0,
     addressOptions: ["沁苑", "紫菘", "韵苑"],
     address: 0,
+    count: 0
   },
 
   onLoad() {
@@ -194,6 +195,7 @@ Page({
           address: Number(this.data.address), // 地址
           freq: 0, // 是否上架
           star: false,
+          count:0,
           owner: this.data.owner,
         },
       })
@@ -214,6 +216,7 @@ Page({
       fileName: "",
       addressOptions: ["沁苑", "紫菘", "韵苑"],
       address: 0,
+      count: 0,
       freq: 0,
     });
   },

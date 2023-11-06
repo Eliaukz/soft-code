@@ -7,13 +7,16 @@ Page({
     book_name: null,
 
     hotBooksid: [],
-    hotBookTitle: null,
     hotBookAddressArray:['沁苑','紫菘','韵苑'],
-    hotBookAddress: null,
-    hotBookPrice:0,
-    hotBook_id:0,
-    hotBookPicture:null,
-    randomIndex:0,
+    
+    randomIndex: [],
+    title:[],
+    address:[],
+    price:[],
+    id:[],
+    picture:[],
+    curidx:0,
+
   },
 
   /**
@@ -26,7 +29,17 @@ Page({
 
     //获得热门书籍信息
     this.getHotBookInfo().then(() => {
-      this.randomSelect();
+      this.randomSelect().then(() => {
+        console.log("all done!");
+        console.log("title :",this.data.title);
+        console.log("id :",this.data.id);
+        console.log("address :",this.data.address);
+        console.log("price :",this.data.price);
+        console.log("picture :",this.data.picture);
+        this.data.mytitle = this.data.title[0];
+        console.log("mytitle :",this.data.price);
+        console.log("curidx", this.data.curidx);
+      });
     });
   },
 
@@ -56,43 +69,87 @@ Page({
     });
   },
 
-  getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  getRandomNumber(min, max,pos) {
+    let cur;
+    for(let i=1;i>=1;i++){
+      cur = Math.floor(Math.random() * (max - min + 1)) + min;
+      let legal = 1;
+      for(let j=0;j<pos;j++){
+        if(cur == this.data.randomIndex[j]) legal = 0;
+      }
+      if(legal == 1) break;
+    }
+    this.data.randomIndex[pos] = cur;
+    console.log("cur : ",cur);
+    this.data.curidx = pos;
   },
   /*
    * 随机选取一个热门书籍
    */
-  randomSelect(){
-    console.log("热门书籍id数组 :",this.data.hotBooksid);
-    this.data.randomIndex = this.getRandomNumber(0,this.data.hotBooksid.length);
-    console.log("randomIndex :", this.data.randomIndex);
-
-    this.getSelectBook().then(() => {
+  async randomSelect(){
+    return new Promise((resolve,reject) => {
+      console.log("热门书籍id数组 :",this.data.hotBooksid);
+      for(let i=0;i<=2;i++){
+        this.getRandomNumber(0,this.data.hotBooksid.length-1,i);
+      }
+      this.getSelectBook(0).then(() => {
+        console.log("0 done!");
+        this.getSelectBook(1).then(() => {
+          console.log("1 done!");
+          this.getSelectBook(2).then(() => {
+            console.log("2 done!");
+            console.log("title :",this.data.title);
+            console.log("id :",this.data.id);
+            console.log("address :",this.data.address);
+            console.log("price :",this.data.price);
+            console.log("picture :",this.data.picture);
+            console.log("mytitle :",this.data.price);
+            console.log("curidx", this.data.curidx);
+            resolve();
+          });
+        });
+      });
     });
   },
 
   /*
    * 获得选取的热门书籍的信息
    */
-  async getSelectBook(){
+  async getSelectBook(i){
     return new Promise((resolve,reject) => {
-      wx.cloud.database().collection("book").doc(this.data.hotBooksid[this.data.randomIndex]).get({
-        success: (res) => {
-          this.setData({
-            hotBookTitle: res.data.title,
-            hotBookAddress: this.data.hotBookAddressArray[res.data.address],
-            hotBookPrice: res.data.price,
-            hotBookPicture: res.data.files[0].id,
-            hotBook_id: res.data._id,
-          });
-          console.log("this.title :", this.data.hotBookTitle);
-          resolve(); // 表示异步操作成功
-        },
-        fail: (err) => {
-          console.log(err);
-          reject(err); // 表示异步操作失败
-        },
-      });
+        wx.cloud.database().collection("book").doc(this.data.hotBooksid[this.data.randomIndex[i]]).get({
+          success: (res) => {
+            const curTitle = this.data.title;
+            curTitle[i] = res.data.title;
+            const curAddress = this.data.address;
+            curAddress[i] = this.data.hotBookAddressArray[res.data.address];
+            const curPrice = this.data.price;
+            curPrice[i] = res.data.price;
+            const curPicture = this.data.picture;
+            curPicture[i] = res.data.files[0].id;
+            const curId = this.data.id;
+            curId[i] = res.data.id;
+            /* 必须使用setData方法赋值！！！！ */
+            this.setData({
+                title : curTitle,
+                address : curAddress,
+                price : curPrice,
+                picture : curPicture,
+                id : curId,
+                curidx : i,
+            });
+            // this.data.title[i] = res.data.title;
+            // this.data.address[i] = this.data.hotBookAddressArray[res.data.address];
+            // this.data.price[i] = res.data.price;
+            // this.data.picture[i] = res.data.files[0].id;
+            // this.data.id[i] = res.data._id;
+            // console.log("this.title :", this.data.title[i]);
+            resolve();
+          },
+          fail: (err) => {
+            console.log(err);
+          },
+        });
     });
   },
   /**

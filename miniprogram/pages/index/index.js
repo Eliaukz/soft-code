@@ -7,6 +7,7 @@ Page({
     book_name: null,
 
     hotBooksid: [],
+
     hotBookAddressArray:['沁苑','紫菘','韵苑'],
     
     randomIndex: [],
@@ -17,6 +18,7 @@ Page({
     picture:[],
     count:[],
     curidx:0,
+
 
   },
 
@@ -46,27 +48,33 @@ Page({
 
   /*
    *  获得热门书籍信息
-   */ 
-  async getHotBookInfo(){
-    return new Promise((resolve,reject) => {
-      wx.cloud.database().collection("book").orderBy("count","desc").limit(100).field({
-        _id:true,
-      }).get({
-        success: (res) => {
-          console.log("查询热门书籍成功!",res.data);
-          console.log("长度",res.data.length);
-          for(let i = 0;i < res.data.length;i++){
-            this.data.hotBooksid[i] = res.data[i]._id;
-            console.log("当前值：",res.data[i]._id);
-          }
-          console.log("成功返回!");
-          resolve();
-        },
-        fail: (err) => {
-          console.log(err);
-          reject(err);
-        },
-      });
+   */
+  async getHotBookInfo() {
+    return new Promise((resolve, reject) => {
+      wx.cloud
+        .database()
+        .collection("book")
+        .orderBy("count", "desc")
+        .limit(100)
+        .field({
+          _id: true,
+        })
+        .get({
+          success: (res) => {
+            console.log("查询热门书籍成功!", res.data);
+            console.log("长度", res.data.length);
+            for (let i = 0; i < res.data.length; i++) {
+              this.data.hotBooksid[i] = res.data[i]._id;
+              console.log("当前值：", res.data[i]._id);
+            }
+            console.log("成功返回!");
+            resolve();
+          },
+          fail: (err) => {
+            console.log(err);
+            reject(err);
+          },
+        });
     });
   },
 
@@ -168,16 +176,15 @@ Page({
     // this.getHotBookInfo().then(() => {
     //   this.randomSelect();
     // });
-
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-    onHide() {
-        // this.setData({
-        //     book_name: null,
-        //   });
+  onHide() {
+    // this.setData({
+    //     book_name: null,
+    //   });
   },
 
   /**
@@ -236,7 +243,7 @@ Page({
     });
   },
 
-  onChange(){
+  onChange() {
     this.getHotBookInfo().then(() => {
       this.randomSelect();
     });

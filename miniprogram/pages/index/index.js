@@ -11,9 +11,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setData({
-      book_name: null,
-    });
+    // this.setData({
+    //   book_name: null,
+    // });
   },
 
   /**
@@ -30,18 +30,18 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
     onHide() {
-        this.setData({
-            book_name: null,
-          });
+        // this.setData({
+        //     book_name: null,
+        //   });
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-    this.setData({
-      book_name: null,
-    });
+    // this.setData({
+    //   book_name: null,
+    // });
   },
 
   /**

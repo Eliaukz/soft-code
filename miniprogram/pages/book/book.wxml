@@ -95,7 +95,7 @@
 </view>
 
 <view class="books-card" style="height:700rpx">
-    <view class="books-block" style="background-color:rgb(234, 253, 205);height:600rpx;display:block;animation: moveAnimationDetail 0.7s forwards">
+    <view class="books-block" style="background-color:rgb(234, 253, 205);height:600rpx;display:block;animation: moveAnimationDetail 0.8s forwards">
       <view class="detail-field">
         <text style="font-size:50rpx;">书本描述</text>
       </view>

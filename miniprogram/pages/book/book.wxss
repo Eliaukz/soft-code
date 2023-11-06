@@ -14,8 +14,8 @@
 }
 
 @keyframes moveAnimationPrice {
-  0% { transform: translateX(-500rpx); } /* 开始位置 */
-  50% { transform: translateX(-300rpx); } /* 中间位置*/
+  0% { transform: translateX(500rpx); } /* 开始位置 */
+  50% { transform: translateX(300rpx); } /* 中间位置*/
   100% { transform: translateX(0); } /* 结束位置*/
 }
 
@@ -27,8 +27,8 @@
 
 
 @keyframes moveAnimationDetail {
-  0% { transform: translateX(-500rpx); } /* 开始位置*/
-  50% { transform: translateX(-300rpx); } /* 中间位置*/
+  0% { transform: translateX(500rpx); } /* 开始位置*/
+  50% { transform: translateX(300rpx); } /* 中间位置*/
   100% { transform: translateX(0); } /* 结束位置 */
 }
 

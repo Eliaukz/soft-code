@@ -8,7 +8,7 @@
                 <!-- 书籍 -->
                 <view class="book">
                     <view class="bookimage">
-                        <image src="{{item.files}}">
+                        <image src="{{item.files[0].id}}">
                         </image>
                     </view>
                     <view class="bookinfo">

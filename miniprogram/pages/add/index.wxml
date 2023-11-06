@@ -14,16 +14,16 @@
   </view>
   <view class="form-group">
     <view class="form-cell inline">
-      <view>添加附件</view>
+      <view>添加图片</view>
       <view class="upload-text" bindtap="addFile">
-        {{(files.length === 0 ? "点击添加附件" : "已添加")}}
+        {{(files.length === 0 ? "点击添加图片" : "已添加")}}
       </view>
       <image class="upload" bindtap="addFile" src="../../images/add/next.png"></image>
     </view>
   </view>
   <view class="form-group">
     <view class="form-cell inline">
-      <view>价格</view>
+      <view>价格/元(请填写数字)</view>
       <input style = "margin-left: auto;" bindinput="onPriceInput" value ="{{price}}"/>
     </view>
     <view class="form-cell inline">

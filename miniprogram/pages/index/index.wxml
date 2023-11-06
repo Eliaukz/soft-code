@@ -1,4 +1,7 @@
 <!--pages/index/index.wxml-->
+
+<image src="/images/background/index.jpg" class="background-image"></image>
+
 <view class="fillwidth">
     <text class="headFont">
         海量好书，等你来寻
@@ -17,7 +20,7 @@
         </view>
     </view>
 </view>
-<view class="fillwidth">
+<!-- <view class="fillwidth">
     <text class="headFont">
         本日热门
     </text>
@@ -25,7 +28,6 @@
 
 <view class="hot-books">
     <view class="books-block">
-        <!-- 书籍1 -->
         <view class="book">
             <view class="bookimage">
                 <image src="/images/index/book1.jpg">
@@ -39,7 +41,6 @@
                     <text>这是书名信息</text>
                 </view>
             </view>
-            <!-- 其他信息 -->
         </view>
 
         <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
@@ -59,7 +60,6 @@
                     <text>这是书名信息</text>
                 </view>
             </view>
-            <!-- 其他信息 -->
         </view>
 
         <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
@@ -79,7 +79,6 @@
                     <text>这是书名信息</text>
                 </view>
             </view>
-            <!-- 其他信息 -->
         </view>
     </view>
-</view>
+</view> -->

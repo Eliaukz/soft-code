@@ -1,15 +1,22 @@
 <!--pages/search/search.wxml-->
-<block wx:if="{{booklist.length  > 0 }}">
-    <wxs module="util" src="../util.wxs" />
-    <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
-        <view wx:for="{{booklist}}">
-            <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
-                <view class="books-block">
-                    <!-- 书籍 -->
-                    <view class="book">
-                        <view class="bookimage">
-                            <image src="{{item.files[0].id}}">
-                            </image>
+<image src="/images/background/search.jpg" class="background-image"></image>
+
+
+<block  wx:if="{{booklist.length  > 0 }}">
+<wxs module="util" src="../util.wxs"/>
+<scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
+    <view wx:for="{{booklist}}">
+        <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
+            <view class="books-block">
+                <!-- 书籍 -->
+                <view class="book">
+                    <view class="bookimage">
+                        <image src="{{item.files[0].id}}">
+                        </image>
+                    </view>
+                    <view class="bookinfo">
+                        <view style="font-size:35rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+                            <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
                         </view>
                         <view class="bookinfo">
                             <view style="font-size:35rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">

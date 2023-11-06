@@ -1,5 +1,7 @@
-<image class="circleImage" src="{{avatarUrl}}"></image>
+<image src="/images/background/user.jpg" class="background-image"></image>
 
+<image class="circleImage" src="{{avatarUrl}}"></image>
+<view style="height:20rpx;"></view>
 <view class="label-list">
     <view class="label">微信名:</view>
     <view class="label">{{userInfo.nickName}}</view>
@@ -8,18 +10,22 @@
     <text class="label" space="emsp"> 账号:</text>
     <view class="label">{{userInfo.account_id}}</view>
 </view>
-
-<button bindtap="changeUserAvatar" class="buttonType">修改头像</button>
-<button bindtap="changeUser" class="buttonType">切换用户</button>
-
-
+<view style="height:50rpx;"></view>
+<view style="height:140rpx;">
+  <button bindtap="changeUserAvatar" class="my-custom-button">修改头像</button>
+</view>
+<view>
+<button bindtap="changeUser" class="my-custom-button">切换用户</button>
+</view>
+<!-- 
 <view class="flex-container">
     <view class="flex-item" bindtap="showContent" data-id="1">我的发布</view>
     <view class="flex-item" bindtap="showContent" data-id="2">收藏栏</view>
     <view class="flex-item" bindtap="showContent" data-id="3">浏览记录</view>
-</view>
+</view> -->
 
-<view wx:if="{{currentView == 1}}">
+
+<!-- <view wx:if="{{currentView == 1}}">
     <view> 我的发布</view>
     <view wx:for="{{userpublish}}" class="publish"> </view>
 </view>
@@ -30,4 +36,4 @@
 <view wx:if="{{currentView == 3}}">
     <view>浏览记录</view>
     <view wx:for="{{history}}" class="publish"></view>
-</view>
+</view> -->

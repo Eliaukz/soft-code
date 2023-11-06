@@ -2,18 +2,18 @@
 <image src="/images/background/search.jpg" class="background-image"></image>
 
 
-<block  wx:if="{{booklist.length  > 0 }}">
-<wxs module="util" src="../util.wxs"/>
-<scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
-    <view wx:for="{{booklist}}">
-        <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
-            <view class="books-block">
-                <!-- 书籍 -->
-                <view class="book">
-                    <view class="bookimage">
-                        <image src="{{item.files[0].id}}">
-                        </image>
-                    </view>
+<block wx:if="{{booklist.length  > 0 }}">
+    <wxs module="util" src="../util.wxs" />
+    <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
+        <view wx:for="{{booklist}}">
+            <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
+                <view class="books-block">
+                    <!-- 书籍 -->
+                    <view class="book">
+                        <view class="bookimage">
+                            <image src="{{item.files[0].id}}">
+                            </image>
+                        </view>
                         <view class="bookinfo">
                             <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
                                 <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
@@ -22,15 +22,15 @@
                                 <text>{{util.filterStr(item.desc,30)}}</text>
                             </view>
                         </view>
-                      <!-- 其他信息 -->
+                        <!-- 其他信息 -->
 
-                    <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
-                        <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                        <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+                            <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                        </view>
                     </view>
                 </view>
             </view>
         </view>
-    </view>
     </scroll-view>
 </block>
 <block wx:else>

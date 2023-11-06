@@ -5,7 +5,7 @@
 }
 
 .container:last-child {
-  margin-bottom: calc( var(--footer-height) + 24px );
+  margin-bottom: calc(var(--footer-height) + 24px);
 }
 
 .background {
@@ -47,7 +47,7 @@
   width: auto;
   margin-left: 10px;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .book-info_title {
@@ -56,7 +56,7 @@
 
 .book-info_desc {
   font-size: 17px;
-  color: #BDBDBD;
+  color: #bdbdbd;
 }
 
 .star {
@@ -80,5 +80,5 @@
 
 .book-info_title.done {
   text-decoration: line-through;
-  color: #8D8D8D;
+  color: #8d8d8d;
 }

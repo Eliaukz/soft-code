@@ -84,7 +84,7 @@ image {
   }
   
   .clickable-text {
-    color: blue; /* 设置文本颜色为蓝色 */
+    color: rgb(14, 14, 236); /* 设置文本颜色为蓝色 */
     text-decoration: underline; /* 添加下划线效果 */
     cursor: pointer; /* 鼠标悬停时显示手型光标，增加可点击感知 */
   }

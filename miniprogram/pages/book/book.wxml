@@ -38,76 +38,68 @@
 
 <view class="books-card">
     <view class="books-block" style="animation: moveAnimationTitle 0.4s forwards">
-      <view class="block-field">
-        <text style="font-size:50rpx;">书名 :</text>
-      </view>
-      <view class="field-info">
-        <text style="font-size:40rpx;">{{title}}</text>
-      </view>
+        <view class="block-field">
+            <text style="font-size:50rpx;">书名 :</text>
+        </view>
+        <view class="field-info">
+            <text style="font-size:40rpx;">{{title}}</text>
+        </view>
     </view>
 </view>
 
 <view class="books-card">
     <view class="books-block" style="background-color:rgb(21, 73, 34);animation: moveAnimationPrice 0.5s forwards">
-      <view class="block-field">
-        <text style="font-size:50rpx;">价格 :</text>
-      </view>
-      <view class="field-info">
-        <text style="font-size:40rpx;">{{price}}</text>
-      </view>
+        <view class="block-field">
+            <text style="font-size:50rpx;">价格 :</text>
+        </view>
+        <view class="field-info">
+            <text style="font-size:40rpx;">{{price}}</text>
+        </view>
     </view>
 </view>
 
 <view class="books-card">
     <view class="books-block" style="background-color:rgb(176, 231, 190);animation: moveAnimationAddress 0.6s forwards">
-      <view class="block-field">
-        <text style="font-size:50rpx;">地址 :</text>
-      </view>
-      <view class="field-info">
-        <text style="font-size:40rpx;font-weight:bold;font-family:Verdana, Geneva, Tahoma, sans-serif">{{addressarr[address]}}</text>
-      </view>
+        <view class="block-field">
+            <text style="font-size:50rpx;">地址 :</text>
+        </view>
+        <view class="field-info">
+            <text style="font-size:40rpx;font-weight:bold;font-family:Verdana, Geneva, Tahoma, sans-serif">{{addressarr[address]}}</text>
+        </view>
     </view>
 </view>
 
 <view class="books-card" style="height:700rpx">
     <view class="books-block" style="background-color:rgb(234, 253, 205);height:650rpx;display:block;animation: moveAnimationDetail 0.7s forwards">
-      <view class="detail-field">
-        <text style="font-size:50rpx;">卖家图片</text>
-      </view>
-      
-      <view class="detail-picture">
-          <swiper autoplay="true"
-                  indicator-dots="true"
-                  indicator-color="#eee"
-                  indicator-active-color="#139ae7"
-                  duration="200"
-                  interval="3000"
-                  circular="true"
-                  style="height: 550rpx"
-                  >
-               <!-- 使用 wx:for 循环动态生成 swiper-item -->
-              <swiper-item wx:for="{{imagesUrl}}" wx:for-index="index" wx:key="index" class="swiper-style" bindtap="previewImage">
-                <image src="{{item}}" mode="aspectFit"></image>
-              </swiper-item>
-          </swiper>
-      </view>
+        <view class="detail-field">
+            <text style="font-size:50rpx;">卖家图片</text>
+        </view>
+
+        <view class="detail-picture">
+            <swiper autoplay="true" indicator-dots="true" indicator-color="#eee" indicator-active-color="#139ae7" duration="200" interval="3000" circular="true" style="height: 550rpx">
+                <!-- 使用 wx:for 循环动态生成 swiper-item -->
+                <swiper-item wx:for="{{imagesUrl}}" wx:for-index="index" wx:key="index" class="swiper-style" bindtap="previewImage">
+                    <image src="{{item}}" mode="aspectFit"></image>
+                </swiper-item>
+            </swiper>
+        </view>
     </view>
 </view>
 
 <view class="books-card" style="height:700rpx">
     <view class="books-block" style="background-color:rgb(234, 253, 205);height:600rpx;display:block;animation: moveAnimationDetail 0.8s forwards">
-      <view class="detail-field">
-        <text style="font-size:50rpx;">书本描述</text>
-      </view>
-      
-      <view class="detail-info">
-        <!--
+        <view class="detail-field">
+            <text style="font-size:50rpx;">书本描述</text>
+        </view>
+
+        <view class="detail-info">
+            <!--
         <text style="font-size:35rpx;font-family:Verdana, Geneva, Tahoma, sans-serif">这是书本描述这是书本描述这是书本描</text>
         -->
-        <text style="font-size:35rpx;font-family:Verdana, Geneva, Tahoma, sans-serif">{{desc}}</text>
-      </view>
+            <text style="font-size:35rpx;font-family:Verdana, Geneva, Tahoma, sans-serif">{{desc}}</text>
+        </view>
     </view>
 </view>
 <view>
-  <button class="custom-button" bindtap="onclickButton">联系卖家</button>
+    <button class="custom-button" bindtap="onclickButton">联系卖家</button>
 </view>

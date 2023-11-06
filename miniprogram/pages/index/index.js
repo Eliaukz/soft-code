@@ -8,12 +8,12 @@ Page({
 
     hotBooksid: [],
     hotBookTitle: null,
-    hotBookAddressArray:['沁苑','紫菘','韵苑'],
+    hotBookAddressArray: ["沁苑", "紫菘", "韵苑"],
     hotBookAddress: null,
-    hotBookPrice:0,
-    hotBook_id:0,
-    hotBookPicture:null,
-    randomIndex:0,
+    hotBookPrice: 0,
+    hotBook_id: 0,
+    hotBookPicture: null,
+    randomIndex: 0,
   },
 
   /**
@@ -32,27 +32,33 @@ Page({
 
   /*
    *  获得热门书籍信息
-   */ 
-  async getHotBookInfo(){
-    return new Promise((resolve,reject) => {
-      wx.cloud.database().collection("book").orderBy("count","desc").limit(100).field({
-        _id:true,
-      }).get({
-        success: (res) => {
-          console.log("查询热门书籍成功!",res.data);
-          console.log("长度",res.data.length);
-          for(let i = 0;i < res.data.length;i++){
-            this.data.hotBooksid[i] = res.data[i]._id;
-            console.log("当前值：",res.data[i]._id);
-          }
-          console.log("成功返回!");
-          resolve();
-        },
-        fail: (err) => {
-          console.log(err);
-          reject(err);
-        },
-      });
+   */
+  async getHotBookInfo() {
+    return new Promise((resolve, reject) => {
+      wx.cloud
+        .database()
+        .collection("book")
+        .orderBy("count", "desc")
+        .limit(100)
+        .field({
+          _id: true,
+        })
+        .get({
+          success: (res) => {
+            console.log("查询热门书籍成功!", res.data);
+            console.log("长度", res.data.length);
+            for (let i = 0; i < res.data.length; i++) {
+              this.data.hotBooksid[i] = res.data[i]._id;
+              console.log("当前值：", res.data[i]._id);
+            }
+            console.log("成功返回!");
+            resolve();
+          },
+          fail: (err) => {
+            console.log(err);
+            reject(err);
+          },
+        });
     });
   },
 
@@ -62,37 +68,43 @@ Page({
   /*
    * 随机选取一个热门书籍
    */
-  randomSelect(){
-    console.log("热门书籍id数组 :",this.data.hotBooksid);
-    this.data.randomIndex = this.getRandomNumber(0,this.data.hotBooksid.length);
+  randomSelect() {
+    console.log("热门书籍id数组 :", this.data.hotBooksid);
+    this.data.randomIndex = this.getRandomNumber(
+      0,
+      this.data.hotBooksid.length
+    );
     console.log("randomIndex :", this.data.randomIndex);
 
-    this.getSelectBook().then(() => {
-    });
+    this.getSelectBook().then(() => {});
   },
 
   /*
    * 获得选取的热门书籍的信息
    */
-  async getSelectBook(){
-    return new Promise((resolve,reject) => {
-      wx.cloud.database().collection("book").doc(this.data.hotBooksid[this.data.randomIndex]).get({
-        success: (res) => {
-          this.setData({
-            hotBookTitle: res.data.title,
-            hotBookAddress: this.data.hotBookAddressArray[res.data.address],
-            hotBookPrice: res.data.price,
-            hotBookPicture: res.data.files[0].id,
-            hotBook_id: res.data._id,
-          });
-          console.log("this.title :", this.data.hotBookTitle);
-          resolve(); // 表示异步操作成功
-        },
-        fail: (err) => {
-          console.log(err);
-          reject(err); // 表示异步操作失败
-        },
-      });
+  async getSelectBook() {
+    return new Promise((resolve, reject) => {
+      wx.cloud
+        .database()
+        .collection("book")
+        .doc(this.data.hotBooksid[this.data.randomIndex])
+        .get({
+          success: (res) => {
+            this.setData({
+              hotBookTitle: res.data.title,
+              hotBookAddress: this.data.hotBookAddressArray[res.data.address],
+              hotBookPrice: res.data.price,
+              hotBookPicture: res.data.files[0].id,
+              hotBook_id: res.data._id,
+            });
+            console.log("this.title :", this.data.hotBookTitle);
+            resolve(); // 表示异步操作成功
+          },
+          fail: (err) => {
+            console.log(err);
+            reject(err); // 表示异步操作失败
+          },
+        });
     });
   },
   /**
@@ -107,16 +119,15 @@ Page({
     // this.getHotBookInfo().then(() => {
     //   this.randomSelect();
     // });
-
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-    onHide() {
-        // this.setData({
-        //     book_name: null,
-        //   });
+  onHide() {
+    // this.setData({
+    //     book_name: null,
+    //   });
   },
 
   /**
@@ -175,7 +186,7 @@ Page({
     });
   },
 
-  onChange(){
+  onChange() {
     this.getHotBookInfo().then(() => {
       this.randomSelect();
     });

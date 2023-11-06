@@ -14,7 +14,7 @@ Page({
     freq: 0,
     addressOptions: ["沁苑", "紫菘", "韵苑"],
     address: 0,
-    count: 0
+    count: 0,
   },
 
   onLoad() {
@@ -113,17 +113,19 @@ Page({
     wx.showLoading({
       title: "上传中",
     });
-    wx.cloud.uploadFile({
-      filePath: e, //图片路径
-      cloudPath: app.globalData.userInfo.account_id + Date.now() + ".png",
-    }).then(res=>{
+    wx.cloud
+      .uploadFile({
+        filePath: e, //图片路径
+        cloudPath: app.globalData.userInfo.account_id + Date.now() + ".png",
+      })
+      .then((res) => {
         this.data.files.push({
           id: res.fileID,
           name: Date.now().toString(),
-        })
+        });
         this.setData({
           files: this.data.files,
-        })
+        });
         count += 1;
         console.log(res.fileID);
         wx.hideLoading();
@@ -132,16 +134,16 @@ Page({
           icon: "success",
           duration: 1000,
         });
-      }).catch(error=>{
-        console.log(error)
+      })
+      .catch((error) => {
+        console.log(error);
         wx.hideLoading();
         wx.showToast({
           title: "上传失败",
           icon: "none",
           duration: 3000,
         });
-      },
-    );
+      });
   },
   onPriceInput(e) {
     this.setData({
@@ -195,7 +197,7 @@ Page({
           address: Number(this.data.address), // 地址
           freq: 0, // 是否上架
           star: false,
-          count:0,
+          count: 0,
           owner: this.data.owner,
         },
       })

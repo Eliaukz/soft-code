@@ -11,8 +11,8 @@ Page({
     userInfo: null,
   },
 
-  onLoad (options) {
-      console.log("chat",  options.id)
+  onLoad(options) {
+    console.log("chat", options.id);
     this.setData({
       recordId: options.id,
       userInfo: app.globalData.userInfo,
@@ -45,7 +45,7 @@ Page({
           msg.time = utils.formatTime(new Date());
 
           record.push(msg);
-         
+
           db.collection("chat_record")
             .doc(that.data.recordId)
             .update({

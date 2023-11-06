@@ -96,7 +96,7 @@ Page({
     wx.cloud.uploadFile({
       filePath: e, //图片路径
       cloudPath: app.globalData.userInfo.account_id + count + ".png",
-      success:res => {
+      success: (res) => {
         count += 1;
         console.log(res.fileID);
         that.updateAvatar(res.fileID);
@@ -107,8 +107,8 @@ Page({
           duration: 1000,
         });
       },
-      fail: err=> {
-        console.log(err)
+      fail: (err) => {
+        console.log(err);
         wx.hideLoading();
         wx.showToast({
           title: "上传失败",

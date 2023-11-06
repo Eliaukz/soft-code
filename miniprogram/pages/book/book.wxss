@@ -2,44 +2,65 @@
 
 .books-card {
   display: flex;
-  height:160rpx;
-  width:750rpx;
+  height: 160rpx;
+  width: 750rpx;
   justify-content: center;
 }
 
 @keyframes moveAnimationTitle {
-  0% { transform: translateX(500rpx); } /* 开始位置*/
-  50% { transform: translateX(300rpx); } /* 中间位置 */
-  100% { transform: translateX(0); } /* 结束位置， */
+  0% {
+    transform: translateX(500rpx);
+  } /* 开始位置*/
+  50% {
+    transform: translateX(300rpx);
+  } /* 中间位置 */
+  100% {
+    transform: translateX(0);
+  } /* 结束位置， */
 }
 
 @keyframes moveAnimationPrice {
-  0% { transform: translateX(500rpx); } /* 开始位置 */
-  50% { transform: translateX(300rpx); } /* 中间位置*/
-  100% { transform: translateX(0); } /* 结束位置*/
+  0% {
+    transform: translateX(500rpx);
+  } /* 开始位置 */
+  50% {
+    transform: translateX(300rpx);
+  } /* 中间位置*/
+  100% {
+    transform: translateX(0);
+  } /* 结束位置*/
 }
 
 @keyframes moveAnimationAddress {
-  0% { transform: translateX(500rpx); } /* 开始位置*/
-  50% { transform: translateX(300rpx); } /* 中间位置*/
-  100% { transform: translateX(0); } /* 结束位置*/
+  0% {
+    transform: translateX(500rpx);
+  } /* 开始位置*/
+  50% {
+    transform: translateX(300rpx);
+  } /* 中间位置*/
+  100% {
+    transform: translateX(0);
+  } /* 结束位置*/
 }
-
 
 @keyframes moveAnimationDetail {
-  0% { transform: translateX(500rpx); } /* 开始位置*/
-  50% { transform: translateX(300rpx); } /* 中间位置*/
-  100% { transform: translateX(0); } /* 结束位置 */
+  0% {
+    transform: translateX(500rpx);
+  } /* 开始位置*/
+  50% {
+    transform: translateX(300rpx);
+  } /* 中间位置*/
+  100% {
+    transform: translateX(0);
+  } /* 结束位置 */
 }
 
-
-
-.books-block{
+.books-block {
   display: flex; /* 设置为水平布局容器 */
   width: 700rpx; /* 可根据需要设置宽度 */
   height: 100rpx; /* 可根据需要设置高度 */
   /*background-color: rgba(176, 231, 190); /* 设置背景颜色，可根据需要调整 */
-  background: linear-gradient(to bottom, #87CEEB, #ffffff);
+  background: linear-gradient(to bottom, #87ceeb, #ffffff);
 
   /*box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
   box-shadow: 1rpx 1rpx 6rpx 0rpx rgba(0, 0, 0, 0.4) inset;
@@ -47,47 +68,44 @@
   padding: 20rpx; /* 可根据需要设置内边距 */
   text-align: center; /* 文本居中显示 */
   border-radius: 40rpx; /* 圆角边框 */
-
 }
 
-
-
-.block-field{
+.block-field {
   display: flex;
   width: 250rpx;
   height: 100rpx;
-  text-align:left;
-  justify-content:flex-start;
-  align-items:center;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.field-info {  
+.field-info {
   display: flex;
   width: 450rpx;
   height: 100rpx;
-  text-align:center;
-  justify-content:center;
-  align-items:center;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
-.detail-field{
+.detail-field {
   display: block;
   width: 700rpx;
   height: 80rpx;
-  text-align:center;
-  justify-content:center;
-  align-items:center;
-  font-weight:bold;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .detail-info {
   width: 700rpx;
   height: 420rpx;
   font-size: 35rpx;
-  text-align:left;
+  text-align: left;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-top: 10rpx; /* 添加段前间距 */
   margin-bottom: 10rpx; /* 添加段后间距 */

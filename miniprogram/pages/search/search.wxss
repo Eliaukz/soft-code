@@ -1,51 +1,46 @@
 /* pages/search/search.wxss */
 
-
-
-
 .hot-books {
-    display: flex;
-    /* height:400rpx; */
-    width:750rpx;
-    justify-content: center;
-  }
+  display: flex;
+  /* height:400rpx; */
+  width: 750rpx;
+  justify-content: center;
+}
 
+.books-block {
+  display: flex;
+  width: 750rpx; /* 可根据需要设置宽度 */
+  /* height: 490rpx; 可根据需要设置高度 */
+  background-color: #fff; /* 设置背景颜色，可根据需要调整 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
+  padding: 10px; /* 可根据需要设置内边距 */
+  text-align: center; /* 文本居中显示 */
+  /* 其他样式，如文本颜色等，可以根据需要自定义 */
+  justify-content: center;
+}
 
-.books-block{
-    display:flex;
-    width: 750rpx; /* 可根据需要设置宽度 */
-    /* height: 490rpx; 可根据需要设置高度 */
-    background-color: #fff; /* 设置背景颜色，可根据需要调整 */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
-    padding: 10px; /* 可根据需要设置内边距 */
-    text-align: center; /* 文本居中显示 */
-    /* 其他样式，如文本颜色等，可以根据需要自定义 */
-    justify-content: center;
-  }
-  
-  .book {
-    display: flex;
-    height:150rpx;
-    width: 600rpx;
-    /* 可以根据需要设置内边距、边框、样式等 */
-  }
-  image {
-    width: 130rpx;
-    height: 150rpx;
-  }
-  .bookimage {
-    height:150rpx;
-    width:130rpx;
-  }
-  .bookinfo {
-    display:block;
-    height:150rpx;
-    width:450rpx;
-  }
-  
-  .clickable-text {
-    color: blue; /* 设置文本颜色为蓝色 */
-    text-decoration: underline; /* 添加下划线效果 */
-    cursor: pointer; /* 鼠标悬停时显示手型光标，增加可点击感知 */
-  }
-  
+.book {
+  display: flex;
+  height: 150rpx;
+  width: 600rpx;
+  /* 可以根据需要设置内边距、边框、样式等 */
+}
+image {
+  width: 130rpx;
+  height: 150rpx;
+}
+.bookimage {
+  height: 150rpx;
+  width: 130rpx;
+}
+.bookinfo {
+  display: block;
+  height: 150rpx;
+  width: 450rpx;
+}
+
+.clickable-text {
+  color: blue; /* 设置文本颜色为蓝色 */
+  text-decoration: underline; /* 添加下划线效果 */
+  cursor: pointer; /* 鼠标悬停时显示手型光标，增加可点击感知 */
+}

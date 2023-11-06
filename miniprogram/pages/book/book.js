@@ -12,21 +12,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:null,
-    id: '',
+    userInfo: null,
+    id: "",
     bookInfo: null,
     owner: null, // 保存书籍所有者的id
-    title: '', // 保存书名
+    title: "", // 保存书名
     files: [], //书的图片云存储，每个元素包含三个属性,id name size(弃用)
-    desc: '', // 保存描述
+    desc: "", // 保存描述
     price: 0, // 保存价格
-    addressarr: ['沁苑','紫菘','韵苑'],
+    addressarr: ["沁苑", "紫菘", "韵苑"],
     address: 0, // 保存地址
     freq: 0, // 保存发布状态
     star: 0, // 保存星标特效标记
-    recordid:'',//记录对话id
+    recordid: "", //记录对话id
 
-    imagesUrl:[],
+    imagesUrl: [],
   },
 
   /**
@@ -34,8 +34,8 @@ Page({
    */
   onLoad(options) {
     this.setData({
-        userInfo: app.globalData.userInfo,
-      });
+      userInfo: app.globalData.userInfo,
+    });
     this.setData({
       id: options.id,
     });
@@ -46,7 +46,6 @@ Page({
     });
   },
 
-  
   // getBookInfo() {
   //   /*
   //    * 从数据库获取书籍的信息
@@ -78,44 +77,46 @@ Page({
 
   async getBookInfo() {
     return new Promise((resolve, reject) => {
-      wx.cloud.database().collection("book").doc(this.data.id).get({
-        success: (res) => {
-          console.log("OK!");
-          console.log("data :", res.data);
-          console.log("title :", res.data.title);
-          this.setData({
-            title: res.data.title,
-            bookInfo: res.data,
-            owner: res.data.owner,
-            files: res.data.files,
-            desc: res.data.desc,
-            price: res.data.price,
-            address: res.data.address,
-            freq: res.data.freq,
-            star: res.data.star,
-          });
-          console.log("this.title :", this.data.title);
-          resolve(); // 表示异步操作成功
-        },
-        fail: (err) => {
-          console.log(err);
-          reject(err); // 表示异步操作失败
-        },
-      });
+      wx.cloud
+        .database()
+        .collection("book")
+        .doc(this.data.id)
+        .get({
+          success: (res) => {
+            console.log("OK!");
+            console.log("data :", res.data);
+            console.log("title :", res.data.title);
+            this.setData({
+              title: res.data.title,
+              bookInfo: res.data,
+              owner: res.data.owner,
+              files: res.data.files,
+              desc: res.data.desc,
+              price: res.data.price,
+              address: res.data.address,
+              freq: res.data.freq,
+              star: res.data.star,
+            });
+            console.log("this.title :", this.data.title);
+            resolve(); // 表示异步操作成功
+          },
+          fail: (err) => {
+            console.log(err);
+            reject(err); // 表示异步操作失败
+          },
+        });
     });
   },
-  
-  
 
   /*
    * 从云存储中获取书籍的图片
    */
-  async getPicture(){
+  async getPicture() {
     return new Promise((resolve, reject) => {
-      for(let i = 0;i < this.data.files.length;i++){
+      for (let i = 0; i < this.data.files.length; i++) {
         console.log("now getPicture");
         const cloudId = this.data.files[i].id;
-        console.log("cloudId : ",cloudId);
+        console.log("cloudId : ", cloudId);
 
         wx.cloud.getTempFileURL({
           fileList: [cloudId], // 传入文件 ID 的数组
@@ -126,16 +127,16 @@ Page({
             const curImagesUrl = this.data.imagesUrl; // 获取当前图片数组的引用
             curImagesUrl[i] = tempFileURL;
             this.setData({
-              imagesUrl: curImagesUrl
+              imagesUrl: curImagesUrl,
             });
 
-            console.log("imagesUrl :",this.data.imagesUrl);
+            console.log("imagesUrl :", this.data.imagesUrl);
           },
           fail: (err) => {
             // 获取临时链接失败
             console.error("获取临时链接失败", err);
             reject(err);
-          }
+          },
         });
       }
       resolve();
@@ -149,59 +150,81 @@ Page({
     // 在页面初次渲染完成时，可以根据获取的书籍信息渲染页面
     if (this.data.bookInfo) {
       // 可以使用this.data中的变量来渲染页面
-      console.log('书名:', this.data.title);
-      console.log('描述:', this.data.desc);
-      console.log('价格:', this.data.price);
-      console.log('地址:', this.data.address);
-      console.log('发布状态:', this.data.freq === 1 ? '已发布' : '未发布');
-      console.log('星标特效标记:', this.data.star === 1 ? '是' : '否');
+      console.log("书名:", this.data.title);
+      console.log("描述:", this.data.desc);
+      console.log("价格:", this.data.price);
+      console.log("地址:", this.data.address);
+      console.log("发布状态:", this.data.freq === 1 ? "已发布" : "未发布");
+      console.log("星标特效标记:", this.data.star === 1 ? "是" : "否");
     }
   },
 
   addFriend() {
+    if (this.data.userInfo._id == this.data.owner._id) {
+      wx.showToast({
+        title: "卖家是您！",
+      });
+      return;
+    }
+
+    db.collection("chat_record")
+      .where(
+        db.command.and(
+          {
+            userA_id: this.data.userInfo._id,
+          },
+          {
+            userB_id: this.data.owner._id,
+          }
+        )
+      )
+      .get({
+        success: (res) => {
+          console.log(res, res.data);
+          wx.navigateTo({
+            url: "/pages/chat/chat?id=" + res.data[0]._id,
+          });
+        },
+        fail: (err) => {
+          console.log(err);
+          this.f();
+        },
+      });
+  },
+
+  f() {
     var that = this;
     db.collection("chat_record").add({
       data: {
-        userA_id: that.data.userInfo._id,
-        userA_account_id: that.data.userInfo.account_id,
-        userA_avatarUrl: that.data.userInfo.avatarUrl,
+        userA_id: this.data.userInfo._id,
+        userA_account_id: this.data.userInfo.account_id,
+        userA_avatarUrl: this.data.userInfo.avatarUrl,
 
-        userB_id:this.data.owner._id,
-        userB_account_id:this.data.owner.account_id,
-        userB_avatarUrl : this.data.owner.avatarUrl,
+        userB_id: this.data.owner._id,
+        userB_account_id: this.data.owner.account_id,
+        userB_avatarUrl: this.data.owner.avatarUrl,
 
         record: [],
         friend_status: true,
         time: utils.formatTime(new Date()),
       },
-      success: function(res) {
-          that.setData({
-              recordid:res._id
-          })
-        console.log('插入成功', res._id)
-        console.log(that.data.recordid)
-        wx.navigateTo({
-            url: "/pages/chat/chat?id=" + that.data.recordid,
+      success: function (res) {
+        that.setData({
+          recordid: res._id,
         });
-
+        console.log("插入成功", res._id);
+        wx.navigateTo({
+          url: "/pages/chat/chat?id=" + that.data.recordid,
+        });
       },
-      fail: function(err) {
-        console.error('插入失败', err);
-      }
+      fail: function (err) {
+        console.error("插入失败", err);
+      },
     });
-
-
   },
 
-
-   onclickButton() {
-
-    this.addFriend()
-    // console.log("this.  " ,this.data.recordid)
-    
-    // wx.navigateTo({
-    // url: "/pages/chat/chat?id=" + this.data.recordid,
-    // });
+  onclickButton() {
+    this.addFriend();
   },
 
   /*
@@ -213,7 +236,7 @@ Page({
 
     wx.previewImage({
       current: current, // 当前显示图片的链接
-      urls: urls // 需要预览的图片链接列表
+      urls: urls, // 需要预览的图片链接列表
     });
   },
   /**
@@ -249,7 +272,5 @@ Page({
   /*
    * 用户点击按钮触发事件
    */
-  clickButton(e){
-
-  },
+  clickButton(e) {},
 });

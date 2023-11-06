@@ -18,21 +18,25 @@
                         <view style="font-size:35rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
                             <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
                         </view>
-                        <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
-                            <text>{{util.filterStr(item.desc,30)}}</text>
+                        <view class="bookinfo">
+                            <view style="font-size:35rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+                                <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
+                            </view>
+                            <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+                                <text>{{util.filterStr(item.desc,30)}}</text>
+                            </view>
                         </view>
+                        <!-- 其他信息 -->
                     </view>
-                    <!-- 其他信息 -->
-                </view>
 
-                <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
-                    <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                    <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+                        <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                    </view>
                 </view>
             </view>
         </view>
-    </view>
-</scroll-view>
+    </scroll-view>
 </block>
-<block  wx:else >
-.....什么也没有
+<block wx:else>
+    .....什么也没有
 </block>

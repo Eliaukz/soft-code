@@ -1,6 +1,13 @@
 /* pages/search/search.wxss */
 
-
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
 
 .hot-books {
@@ -15,7 +22,7 @@
     display:flex;
     width: 750rpx; /* 可根据需要设置宽度 */
     /* height: 490rpx; 可根据需要设置高度 */
-    background-color: #fff; /* 设置背景颜色，可根据需要调整 */
+    background-color: rgba(255, 255, 255,0.4); /* 设置背景颜色，可根据需要调整 */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 添加一个阴影效果，可根据需要调整颜色和模糊程度 */
     padding: 10px; /* 可根据需要设置内边距 */
     text-align: center; /* 文本居中显示 */

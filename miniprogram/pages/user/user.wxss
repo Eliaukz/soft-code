@@ -1,5 +1,14 @@
 /* pages/user/user.wxss */
 
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 .inputBox {
   width: 70%;
   padding: 6rpx 10rpx;
@@ -76,4 +85,18 @@
   border: 2rpx solid black;
   height: 50rpx;
   margin: 25rpx 50rpx;
+}
+
+/* 在小程序的样式文件中定义按钮样式 */
+.my-custom-button {
+  background-color: #60df60; /* 背景颜色 */
+  color: #fff; /* 文本颜色 */
+  padding: 20rpx 30rpx; /* 内边距，可根据需求调整 */
+  /* border: none; 去除按钮边框 */
+  border-radius: 10rpx; /* 圆角边框，可根据需求调整 */
+  font-size: 35rpx; /* 字体大小，可根据需求调整 */
+  cursor: pointer; /* 显示手型光标，尽管在手机端没有实际鼠标 */
+}
+.my-custom-button:active {
+  background-color: #e4e4e4; /* 修改为不同的背景颜色 */
 }

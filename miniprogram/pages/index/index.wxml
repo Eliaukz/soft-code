@@ -48,6 +48,11 @@
       <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
         <text>售价 : {{price[0]}}元</text>
       </view>
+      <view style="display:flex;width:470rpx;height:40rpx;justify-content:flex-end;">
+        <view style="width:300rpx; text-align: right;">
+          <text>点击热度 : {{count[0]}}</text>
+        </view>
+      </view>
     </view>
   </view>
 </view>
@@ -68,8 +73,13 @@
       <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
         <text>售价 : {{price[1]}}元</text>
       </view>
-
+      <view style="display:flex;width:470rpx;height:40rpx;justify-content:flex-end;">
+        <view style="width:300rpx; text-align: right;">
+          <text>点击热度 : {{count[1]}}</text>
+        </view>
+      </view>
     </view>
+  </view>
 </view>
 
 <view style="height:20rpx;"></view>
@@ -88,10 +98,14 @@
       <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
         <text>售价 : {{price[2]}}元</text>
       </view>
+      <view style="display:flex;width:470rpx;height:40rpx;justify-content:flex-end;">
+        <view style="width:300rpx; text-align: right;">
+          <text>点击热度 : {{count[2]}}</text>
+        </view>
+      </view>
     </view>
   </view>
 </view>
-
 </block>
 <!-- <view class="fillwidth">
     <text class="headFont">

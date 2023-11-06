@@ -10,7 +10,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) {
+    this.setData({
+      book_name: null,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -25,12 +29,20 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {},
+    onHide() {
+        this.setData({
+            book_name: null,
+          });
+  },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {},
+  onUnload() {
+    this.setData({
+      book_name: null,
+    });
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

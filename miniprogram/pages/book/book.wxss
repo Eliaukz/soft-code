@@ -91,12 +91,20 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-top: 10rpx; /* 添加段前间距 */
   margin-bottom: 10rpx; /* 添加段后间距 */
-  text-indent: 2em; /* 添加首行缩进 */
+  text-indent: 2em; /*添加首行缩进 */
 }
 
+.detail-picture {
+  width: 700rpx;
+  height: 420rpx;
+  font-size: 35rpx;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 10rpx; /* 添加段前间距 */
+  margin-bottom: 10rpx; /* 添加段后间距 */
+}
 
 .custom-button {
-  background-color: #007BFF; /* 按钮背景颜色 */
+  background-color: #139ae7; /* 按钮背景颜色 */
   color: #fff; /* 文本颜色 */
   border: none; /* 去除边框 */
   border-radius: 4px; /* 圆角边框 */

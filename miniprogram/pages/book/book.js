@@ -12,12 +12,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-      userInfo:null,
+    userInfo:null,
     id: '',
     bookInfo: null,
     owner: null, // 保存书籍所有者的id
     title: '', // 保存书名
-    files: [], //书的图片
+    files: [], //书的图片云存储，每个元素包含三个属性,id name size(弃用)
     desc: '', // 保存描述
     price: 0, // 保存价格
     addressarr: ['沁苑','紫菘','韵苑'],
@@ -25,6 +25,8 @@ Page({
     freq: 0, // 保存发布状态
     star: 0, // 保存星标特效标记
     recordid:'',//记录对话id
+
+    imagesUrl:[],
   },
 
   /**
@@ -37,32 +39,106 @@ Page({
     this.setData({
       id: options.id,
     });
-    this.getBookInfo();
-
+    // this.getBookInfo();
+    // this.getPicture();
+    this.getBookInfo().then(() => {
+      this.getPicture();
+    });
   },
 
-  getBookInfo() {
-    wx.cloud.database().collection("book").doc(this.data.id).get({
-      success: (res) =>{
-        console.log("OK!");
-        console.log("data :",res.data);
-        console.log("title :",res.data.title);
-        this.setData({
-          title: res.data.title,
-          bookInfo: res.data,
-          owner: res.data.owner,
-          files: res.data.files, //书的图片
-          desc: res.data.desc, // 保存描述
-          price: res.data.price, // 保存价格
-          address: res.data.address, // 保存地址
-          freq: res.data.freq, // 保存发布状态
-          star: res.data.star, // 保存星标特效标记
+  
+  // getBookInfo() {
+  //   /*
+  //    * 从数据库获取书籍的信息
+  //    */
+  //   wx.cloud.database().collection("book").doc(this.data.id).get({
+  //     success: (res) =>{
+  //       console.log("OK!");
+  //       console.log("data :",res.data);
+  //       console.log("title :",res.data.title);
+  //       this.setData({
+  //         title: res.data.title,
+  //         bookInfo: res.data,
+  //         owner: res.data.owner,
+  //         files: res.data.files, //书的图片
+  //         desc: res.data.desc, // 保存描述
+  //         price: res.data.price, // 保存价格
+  //         address: res.data.address, // 保存地址
+  //         freq: res.data.freq, // 保存发布状态
+  //         star: res.data.star, // 保存星标特效标记
+  //       });
+  //       console.log("this.title :",this.data.title);
+  //     },
+  //     fail: (err) => {
+  //       console.log(err);
+  //     },
+
+  //   });
+  // },
+
+  async getBookInfo() {
+    return new Promise((resolve, reject) => {
+      wx.cloud.database().collection("book").doc(this.data.id).get({
+        success: (res) => {
+          console.log("OK!");
+          console.log("data :", res.data);
+          console.log("title :", res.data.title);
+          this.setData({
+            title: res.data.title,
+            bookInfo: res.data,
+            owner: res.data.owner,
+            files: res.data.files,
+            desc: res.data.desc,
+            price: res.data.price,
+            address: res.data.address,
+            freq: res.data.freq,
+            star: res.data.star,
+          });
+          console.log("this.title :", this.data.title);
+          resolve(); // 表示异步操作成功
+        },
+        fail: (err) => {
+          console.log(err);
+          reject(err); // 表示异步操作失败
+        },
+      });
+    });
+  },
+  
+  
+
+  /*
+   * 从云存储中获取书籍的图片
+   */
+  async getPicture(){
+    return new Promise((resolve, reject) => {
+      for(let i = 0;i < this.data.files.length;i++){
+        console.log("now getPicture");
+        const cloudId = this.data.files[i].id;
+        console.log("cloudId : ",cloudId);
+
+        wx.cloud.getTempFileURL({
+          fileList: [cloudId], // 传入文件 ID 的数组
+          success: (res) => {
+            // 获取临时链接成功，res.fileList 是一个包含临时链接的数组
+            const tempFileURL = res.fileList[0].tempFileURL;
+            // 在页面中显示图片
+            const curImagesUrl = this.data.imagesUrl; // 获取当前图片数组的引用
+            curImagesUrl[i] = tempFileURL;
+            this.setData({
+              imagesUrl: curImagesUrl
+            });
+
+            console.log("imagesUrl :",this.data.imagesUrl);
+          },
+          fail: (err) => {
+            // 获取临时链接失败
+            console.error("获取临时链接失败", err);
+            reject(err);
+          }
         });
-        console.log("this.title :",this.data.title);
-      },
-      fail: (err) => {
-        console.log(err);
-      },
+      }
+      resolve();
     });
   },
 
@@ -128,6 +204,18 @@ Page({
     // });
   },
 
+  /*
+   * 图片点击放大查看
+   */
+  previewImage: function (e) {
+    const current = e.currentTarget.dataset.src;
+    const urls = this.data.imagesUrl;
+
+    wx.previewImage({
+      current: current, // 当前显示图片的链接
+      urls: urls // 需要预览的图片链接列表
+    });
+  },
   /**
    * 生命周期函数--监听页面显示
    */

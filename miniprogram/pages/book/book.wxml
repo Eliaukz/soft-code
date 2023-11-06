@@ -10,6 +10,32 @@
   <text>星标特效标记：{{star === 1 ? '是' : '否'}}</text>
 </view>
 -->
+<!-- <image src="{{imageUrl[0]}}" mode="aspectFit" style="width: 300px; height: 200px;"></image> -->
+<!-- <image src="{{imageUrl[1]}}" mode="aspectFit" style="width: 300px; height: 200px;"></image> -->
+<!-- <image src="{{imagesUrl[2]}}" mode="aspectFit" style="width: 300px; height: 200px;"></image> -->
+
+<!-- <view class="books-card" style="height:700rpx">
+    <view class="books-block" style="background-color:rgb(234, 253, 205);height:650rpx;display:block;animation: moveAnimationDetail 0.7s forwards">
+      <view class="detail-field">
+        <text style="font-size:50rpx;">卖家图片</text>
+      </view>
+      
+      <view class="detail-info">
+          <swiper autoplay="true"
+                  indicator-dots="true"
+                  indicator-color="#eee"
+                  indicator-active-color="#87CEEB"
+                  duration="200"
+                  interval="3000"
+                  circular="true">
+              <swiper-item wx:for="{{imagesUrl}}" wx:for-index="index" wx:key="index">
+                <image src="{{item}}" mode="aspectFit" style="height:200rpx;width:600rpx;"></image>
+              </swiper-item>
+          </swiper>
+      </view>
+    </view>
+</view> -->
+
 <view class="books-card">
     <view class="books-block" style="animation: moveAnimationTitle 0.4s forwards">
       <view class="block-field">
@@ -44,6 +70,31 @@
 </view>
 
 <view class="books-card" style="height:700rpx">
+    <view class="books-block" style="background-color:rgb(234, 253, 205);height:650rpx;display:block;animation: moveAnimationDetail 0.7s forwards">
+      <view class="detail-field">
+        <text style="font-size:50rpx;">卖家图片</text>
+      </view>
+      
+      <view class="detail-picture">
+          <swiper autoplay="true"
+                  indicator-dots="true"
+                  indicator-color="#eee"
+                  indicator-active-color="#139ae7"
+                  duration="200"
+                  interval="3000"
+                  circular="true"
+                  style="height: 550rpx"
+                  >
+               <!-- 使用 wx:for 循环动态生成 swiper-item -->
+              <swiper-item wx:for="{{imagesUrl}}" wx:for-index="index" wx:key="index" class="swiper-style" bindtap="previewImage">
+                <image src="{{item}}" mode="aspectFit"></image>
+              </swiper-item>
+          </swiper>
+      </view>
+    </view>
+</view>
+
+<view class="books-card" style="height:700rpx">
     <view class="books-block" style="background-color:rgb(234, 253, 205);height:600rpx;display:block;animation: moveAnimationDetail 0.7s forwards">
       <view class="detail-field">
         <text style="font-size:50rpx;">书本描述</text>
@@ -58,5 +109,5 @@
     </view>
 </view>
 <view>
-  <button class="custom-button" bindtap="onclickButton">点击我</button>
+  <button class="custom-button" bindtap="onclickButton">联系卖家</button>
 </view>

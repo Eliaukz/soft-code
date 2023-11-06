@@ -15,6 +15,7 @@ Page({
     price:[],
     id:[],
     picture:[],
+    count:[],
     curidx:0,
 
   },
@@ -129,6 +130,8 @@ Page({
             curPicture[i] = res.data.files[0].id;
             const curId = this.data.id;
             curId[i] = res.data.id;
+            const curCount = this.data.count;
+            curCount[i] = res.data.count;
             /* 必须使用setData方法赋值！！！！ */
             this.setData({
                 title : curTitle,
@@ -137,6 +140,7 @@ Page({
                 picture : curPicture,
                 id : curId,
                 curidx : i,
+                count : curCount,
             });
             // this.data.title[i] = res.data.title;
             // this.data.address[i] = this.data.hotBookAddressArray[res.data.address];

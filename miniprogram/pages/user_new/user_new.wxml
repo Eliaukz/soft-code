@@ -1,3 +1,0 @@
-<!--pages/user_new/user_new.wxml-->
-
-<button type="primary" style="position: relative; left: 0rpx; top: 842rpx" class="class1" bind:tap="jump2Page2">按钮主操作</button>

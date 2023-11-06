@@ -1,33 +1,40 @@
-<image class="circleImage" src="{{avatarUrl}}"></image>
+<image class="circleImage" src="{{avatarUrl}}" style="position: relative; left: -216rpx; top: -43rpx; width: 179rpx; height: 179rpx; display: block; box-sizing: border-box"></image>
 
-<view class="label-list">
-    <view class="label">微信名:</view>
+<view class="label-list" style="width: 495rpx; height: 92rpx; display: flex; box-sizing: border-box; position: relative; left: 33rpx; top: -223rpx">
+    <view class="label" style="position: relative; left: 99rpx; top: 0rpx">用户名:</view>
     <view class="label">{{userInfo.nickName}}</view>
 </view>
-<view class="label-list">
-    <text class="label" space="emsp"> 账号:</text>
+<view class="label-list" style="position: relative; left: 0rpx; top: -230rpx; width: 495rpx; height: 97rpx; display: flex; box-sizing: border-box">
+    <text class="label" space="emsp" style="position: relative; left: 99rpx; top: 0rpx; width: 158rpx; height: 47rpx; display: block; box-sizing: border-box"> 用户ID:</text>
     <view class="label">{{userInfo.account_id}}</view>
 </view>
 
-<button bindtap="changeUserAvatar" class="buttonType">修改头像</button>
-<button bindtap="changeUser" class="buttonType">切换用户</button>
 
 
-<view class="flex-container">
-    <view class="flex-item" bindtap="showContent" data-id="1">我的发布</view>
-    <view class="flex-item" bindtap="showContent" data-id="2">收藏栏</view>
-    <view class="flex-item" bindtap="showContent" data-id="3">浏览记录</view>
-</view>
 
-<view wx:if="{{currentView == 1}}">
-    <view> 我的发布</view>
-    <view wx:for="{{userpublish}}" class="publish"> </view>
-</view>
-<view wx:if="{{currentView == 2}}">
-    <view>收藏栏</view>
-    <view wx:for="{{userclooection}}" class="publish"> </view>
-</view>
-<view wx:if="{{currentView == 3}}">
-    <view>浏览记录</view>
-    <view wx:for="{{history}}" class="publish"></view>
-</view>
+
+
+
+<!-- 三个功能 -->
+<view style="display: flex; flex-direction: row; height: 214rpx; padding: 10px; margin: 10px; position: relative; left: 0rpx; top: -251rpx; width: 722rpx; box-sizing: border-box">
+          <button type="primary" style="background-color: #0f8504; width: 225rpx; height: 167rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx" bindtap="jump2Warehouse" class="button1">我的发布</button>
+          <button type="primary" style="background-color: #0f8504; flex: 1;" bindtap="changeUserAvatar" class="button1">修改头像</button>
+          <button type="primary" style="background-color: #0f8504; flex: 1;" bindtap="changeUser" class="button1">切换用户</button>
+        </view>
+
+
+
+
+<!-- 用户反馈-->
+<t-button theme="primary" block content="提交反馈" bind:tap="jump2feedback"></t-button>
+
+
+       
+
+
+      
+
+
+
+
+

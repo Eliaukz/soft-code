@@ -41,12 +41,23 @@ Page({
   },
 
   onLoad() {},
-
+  // 切换用户
   changeUser() {
     app.globalData.userInfo = null;
     wx.navigateTo({
       url: "/pages/login/login",
     });
+  },
+  // 跳转到库存 要使用switchTab
+  jump2Warehouse() {
+    wx.switchTab({
+      url: '/pages/list/index', // 仓库页面的路径
+    });
+  },
+  jump2feedback() {
+    wx.navigateTo({
+      url: '../../pages/feedback/feedback',
+    })
   },
   changeUserAvatar() {
     let a = this;

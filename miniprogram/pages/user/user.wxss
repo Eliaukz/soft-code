@@ -21,7 +21,7 @@
 .userNickname {
   margin-top: 50rpx;
   margin-left: 300rpx;
-  font-size: large;
+  font-size: small;
 }
 
 .label-list {

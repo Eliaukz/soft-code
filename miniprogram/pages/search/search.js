@@ -13,6 +13,11 @@ Page({
   data: {
     booklist: ["null"],
     searchinfo: null,
+    address0: [], // 沁苑
+    address1: [], // 紫菘
+    address2: [], // 韵苑
+    addressOptions: ['沁苑','紫菘', '韵苑','全部'],
+    address: 3
   },
 
   search(info) {
@@ -35,8 +40,14 @@ Page({
           console.log("res", res);
           that.setData({
             booklist: res.data,
+            address0: res.data.filter((booklist) => booklist.address === 0),
+            address1: res.data.filter((booklist) => booklist.address === 1),
+            address2: res.data.filter((booklist) => booklist.address === 2),
           });
           console.log(this.data.booklist);
+          console.log(this.data.address0);
+          console.log(this.data.address1);
+          console.log(this.data.address2);
         },
         fail: (err) => {
           console.log("查询失败", err);
@@ -123,4 +134,11 @@ Page({
       url: "/pages/book/book?id=" + e.currentTarget.dataset.id,
     });
   },
+  onChooseAddress(e){
+    this.setData({
+      address: e.detail.value
+    })
+    console.log(this.data.address)
+
+  }
 });

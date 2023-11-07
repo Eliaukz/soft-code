@@ -1,38 +1,154 @@
 <!--pages/search/search.wxml-->
 <image src="/images/background/search.jpg" class="background-image"></image>
+<view class="addressFilter">
+      <view style="font-size:150%;">地址筛选</view>
+      <picker class="option" bindchange="onChooseAddress" range="{{addressOptions}}">
+          {{addressOptions[address]}}
+      </picker>
+      <picker class="selector" bindchange="onChooseAddress" range="{{addressOptions}}">
+      </picker>
+</view>
+<block wx:if="{{address == 3}}">
+    <block wx:if="{{booklist != null && booklist.length != 0}}">
+      <wxs module="util" src="../util.wxs" />
+      <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
+          <view wx:for="{{booklist}}">
+              <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
+                  <view class="books-block">
+                      <!-- 书籍 -->
+                      <view class="book">
+                          <view class="bookimage">
+                              <image src="{{item.files[0].id}}">
+                              </image>
+                          </view>
+                          <view class="bookinfo">
+                              <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
+                                  <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
+                              </view>
+                              <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+                                  <text>{{util.filterStr(item.desc,30)}}</text>
+                              </view>
+                          </view>
+                          <!-- 其他信息 -->
 
-
-<block wx:if="{{booklist.length  > 0 }}">
-    <wxs module="util" src="../util.wxs" />
-    <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
-        <view wx:for="{{booklist}}">
-            <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
-                <view class="books-block">
-                    <!-- 书籍 -->
-                    <view class="book">
-                        <view class="bookimage">
-                            <image src="{{item.files[0].id}}">
-                            </image>
-                        </view>
-                        <view class="bookinfo">
-                            <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
-                                <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
-                            </view>
-                            <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
-                                <text>{{util.filterStr(item.desc,30)}}</text>
-                            </view>
-                        </view>
-                        <!-- 其他信息 -->
-
-                        <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
-                            <view style="background-color: gray;height:5rpx;width:100%;"></view>
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
-    </scroll-view>
+                          <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+                              <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                          </view>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </scroll-view>
+    </block>
+    <block wx:else>
+      .....什么也没有  
+    </block>
 </block>
-<block wx:else>
-    .....什么也没有
+<block wx:if="{{address == 0}}">
+    <block wx:if="{{address0 != null && address0.length != 0}}">
+      <wxs module="util" src="../util.wxs" />
+      <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
+          <view wx:for="{{address0}}">
+              <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
+                  <view class="books-block">
+                      <!-- 书籍 -->
+                      <view class="book">
+                          <view class="bookimage">
+                              <image src="{{item.files[0].id}}">
+                              </image>
+                          </view>
+                          <view class="bookinfo">
+                              <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
+                                  <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
+                              </view>
+                              <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+                                  <text>{{util.filterStr(item.desc,30)}}</text>
+                              </view>
+                          </view>
+                          <!-- 其他信息 -->
+
+                          <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+                              <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                          </view>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </scroll-view>
+    </block>
+    <block wx:else>
+      .....什么也没有  
+    </block>
+</block>
+<block wx:if="{{address == 1}}">
+    <block wx:if="{{address1 != null && address1.length != 0}}">
+      <wxs module="util" src="../util.wxs" />
+      <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
+          <view wx:for="{{address1}}">
+              <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
+                  <view class="books-block">
+                      <!-- 书籍 -->
+                      <view class="book">
+                          <view class="bookimage">
+                              <image src="{{item.files[0].id}}">
+                              </image>
+                          </view>
+                          <view class="bookinfo">
+                              <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
+                                  <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
+                              </view>
+                              <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+                                  <text>{{util.filterStr(item.desc,30)}}</text>
+                              </view>
+                          </view>
+                          <!-- 其他信息 -->
+
+                          <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+                              <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                          </view>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </scroll-view>
+    </block>
+    <block wx:else>
+      .....什么也没有  
+    </block>
+</block>
+<block wx:if="{{address == 2}}">
+    <block wx:if="{{address2 != null && address2.length != 0}}">
+      <wxs module="util" src="../util.wxs" />
+      <scroll-view scroll-y="true" scroll-into-view="{{scrollLast}}" scroll-with-animation="true" class="hot-books">
+          <view wx:for="{{address2}}">
+              <view class="hot-books" bindtap="ondetail" data-id="{{item._id}}">
+                  <view class="books-block">
+                      <!-- 书籍 -->
+                      <view class="book">
+                          <view class="bookimage">
+                              <image src="{{item.files[0].id}}">
+                              </image>
+                          </view>
+                          <view class="bookinfo">
+                              <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
+                                  <text class="clickable-text" bindtap="onBookNameTap">{{item.title}}</text>
+                              </view>
+                              <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+                                  <text>{{util.filterStr(item.desc,30)}}</text>
+                              </view>
+                          </view>
+                          <!-- 其他信息 -->
+
+                          <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
+                              <view style="background-color: gray;height:5rpx;width:100%;"></view>
+                          </view>
+                      </view>
+                  </view>
+              </view>
+          </view>
+      </scroll-view>
+    </block>
+    <block wx:else>
+      .....什么也没有  
+    </block>
 </block>

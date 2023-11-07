@@ -137,7 +137,7 @@ Page({
             const curPicture = this.data.picture;
             curPicture[i] = res.data.files[0].id;
             const curId = this.data.id;
-            curId[i] = res.data.id;
+            curId[i] = res.data._id;
             const curCount = this.data.count;
             curCount[i] = res.data.count;
             /* 必须使用setData方法赋值！！！！ */

@@ -34,7 +34,7 @@
 </view>
 <view style="height:20rpx;"></view>
 <view style="width:750rpx;height:200rpx;justify-content:center;display:flex;">
-  <view class="hot-book" bindtap="ondetail" data-id="{{hotBook_id}}" >
+  <view class="hot-book" bindtap="ondetail" data-id="{{id[0]}}" >
     <view class="bookimage">
       <image src="{{picture[0]}}"></image>
     </view>
@@ -59,7 +59,7 @@
 
 <view style="height:20rpx;"></view>
 <view style="width:750rpx;height:200rpx;justify-content:center;display:flex;">
-  <view class="hot-book" bindtap="ondetail" data-id="{{hotBook_id}}" >
+  <view class="hot-book" bindtap="ondetail" data-id="{{id[1]}}" >
     <view class="bookimage">
       <image src="{{picture[1]}}"></image>
     </view>
@@ -84,7 +84,7 @@
 
 <view style="height:20rpx;"></view>
 <view style="width:750rpx;height:200rpx;justify-content:center;display:flex;">
-  <view class="hot-book" bindtap="ondetail" data-id="{{hotBook_id}}" >
+  <view class="hot-book" bindtap="ondetail" data-id="{{id[2]}}" >
     <view class="bookimage">
       <image src="{{picture[2]}}"></image>
     </view>

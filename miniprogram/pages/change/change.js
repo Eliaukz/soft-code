@@ -15,9 +15,19 @@ Page({
    * 更改用户新昵称
    */
   handleSubmit(e){
+    if(e.detail.value.nickname.length>=15){// 可以为空，但不能不合法
+      console.log()
+      wx.showToast({
+        title: "请输入15字以下名称！",
+        icon: "error",
+        duration: 2000,
+      });
+      return;
+    }
     this.setData({
       newNickName : e.detail.value.nickname,
     });
+    
     console.log("newNickName : " ,this.data.newNickName);
     this.updateUser().then(() => {
       console.log("update done!");
@@ -46,6 +56,7 @@ Page({
     return new Promise((resolve, reject) => {
 
       console.log("NickName : " ,this.data.newNickName);
+
 
       wx.cloud.database().collection("user").doc(app.globalData.userInfo._id).update({
         data: {

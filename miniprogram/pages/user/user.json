@@ -1,3 +1,13 @@
 {
-  "navigationBarTitleText": "个人中心"
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "t-divider": "/miniprogram_npm/tdesign-miniprogram/divider/divider",
+    "t-tab-bar": "/miniprogram_npm/tdesign-miniprogram/tab-bar/tab-bar",
+    "t-tab-bar-item": "/miniprogram_npm/tdesign-miniprogram/tab-bar-item/tab-bar-item",
+    "t-avatar": "/miniprogram_npm/tdesign-miniprogram/avatar/avatar",
+    "t-tab-panel": "/miniprogram_npm/tdesign-miniprogram/tab-panel/tab-panel",
+    "t-tabs": "/miniprogram_npm/tdesign-miniprogram/tabs/tabs",
+    "t-drawer": "/miniprogram_npm/tdesign-miniprogram/drawer/drawer",
+    "t-button": "/miniprogram_npm/tdesign-miniprogram/button/button"
+  }
 }

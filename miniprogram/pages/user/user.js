@@ -1,4 +1,4 @@
-const app = getApp();
+let app = getApp();
 var count = 0;
 const db = wx.cloud.database();
 Page({
@@ -9,6 +9,7 @@ Page({
     userpublish: [],
     userclooection: [],
     history: [],
+    nickName: "加载中...",
   },
   //页面加载时调用该函数
   setdata() {
@@ -34,13 +35,37 @@ Page({
   },
 
   onShow() {
+    console.log("page load!!!!");
+    //app = getApp();
     this.setData({
       userInfo: app.globalData.userInfo,
       avatarUrl: app.globalData.userInfo.avatarUrl,
     });
+    this.updateNickName();
+  },
+
+  updateNickName(){
+    wx.cloud.database().collection("user").doc(app.globalData.userInfo._id).get({
+      success: (res) => {
+        this.setData({
+          nickName: res.data.nickName,
+        });
+        console.log("res.data.nickName :" , res.data.nickName);
+        console.log("this.data.nickName :", this.data.nickName);
+      },
+      fail: (err) => {
+        console.log(err);
+      },
+    });
   },
 
   onLoad() {},
+
+  changeNickName(){
+    wx.navigateTo({
+      url: '/pages/change/change', // 跳转到更改昵称页面
+    });
+  },
 
   changeUser() {
     app.globalData.userInfo = null;

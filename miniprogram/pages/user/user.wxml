@@ -3,8 +3,8 @@
 <image class="circleImage" src="{{avatarUrl}}"></image>
 <view style="height:20rpx;"></view>
 <view class="label-list">
-    <view class="label">微信名:</view>
-    <view class="label">{{userInfo.nickName}}</view>
+    <text class="label" space="emsp"> 昵称:</text>
+    <view class="label">{{nickName}}</view>
 </view>
 <view class="label-list">
     <text class="label" space="emsp"> 账号:</text>
@@ -16,6 +16,10 @@
 </view>
 <view>
 <button bindtap="changeUser" class="my-custom-button">切换用户</button>
+</view>
+<view style="height:50rpx;"></view>
+<view>
+<button bindtap="changeNickName" class="my-custom-button">更改昵称</button>
 </view>
 <!-- 
 <view class="flex-container">

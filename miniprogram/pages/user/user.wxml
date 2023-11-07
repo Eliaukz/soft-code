@@ -1,11 +1,13 @@
-<image class="circleImage" src="{{avatarUrl}}" style="position: relative; left: -216rpx; top: -43rpx; width: 179rpx; height: 179rpx; display: block; box-sizing: border-box"></image>
+<image src="/images/background/user.jpg" class="background-image"></image>
 
-<view class="label-list" style="width: 495rpx; height: 92rpx; display: flex; box-sizing: border-box; position: relative; left: 33rpx; top: -223rpx">
-    <view class="label" style="position: relative; left: 99rpx; top: 0rpx">用户名:</view>
-    <view class="label">{{userInfo.nickName}}</view>
+<image class="circleImage" src="{{avatarUrl}}" style="position: relative; left: -195rpx; top: 0rpx"></image>
+<view style="height:20rpx;"></view>
+<view class="label-list" style="position: relative; left: 97rpx; top: -141rpx">
+    <text class="label" space="emsp" style="position: relative; left: 99rpx; top: 0rpx"> 昵称:</text>
+    <view class="label" style="position: relative; left: -1rpx; top: 0rpx">{{nickName}}</view>
 </view>
-<view class="label-list" style="position: relative; left: 0rpx; top: -230rpx; width: 495rpx; height: 97rpx; display: flex; box-sizing: border-box">
-    <text class="label" space="emsp" style="position: relative; left: 99rpx; top: 0rpx; width: 158rpx; height: 47rpx; display: block; box-sizing: border-box"> 用户ID:</text>
+<view class="label-list" style="position: relative; left: 97rpx; top: -385rpx; width: 495rpx; height: 97rpx; display: flex; box-sizing: border-box">
+    <text class="label" space="emsp" style="position: relative; left: 99rpx; top: 2rpx; width: 158rpx; height: 47rpx; display: block; box-sizing: border-box"> 用户ID:</text>
     <view class="label">{{userInfo.account_id}}</view>
 </view>
 
@@ -16,10 +18,10 @@
 
 
 <!-- 三个功能 -->
-<view style="display: flex; flex-direction: row; height: 214rpx; padding: 10px; margin: 10px; position: relative; left: 0rpx; top: -251rpx; width: 722rpx; box-sizing: border-box">
-          <button type="primary" style="background-color: #0f8504; width: 225rpx; height: 167rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx" bindtap="jump2Warehouse" class="button1">我的发布</button>
-          <button type="primary" style="background-color: #0f8504; flex: 1;" bindtap="changeUserAvatar" class="button1">修改头像</button>
-          <button type="primary" style="background-color: #0f8504; flex: 1;" bindtap="changeUser" class="button1">切换用户</button>
+<view style="display: flex; flex-direction: row; height: 214rpx; padding: 10px; margin: 10px; position: relative; left: -10rpx; top: -242rpx; width: 722rpx; box-sizing: border-box">
+          <button type="primary" style="background-color: #0f8504; width: 225rpx; height: 167rpx; display: block; box-sizing: border-box; left: 0rpx; top: -24rpx; position: relative" bindtap="jump2Warehouse" class="button1">我的发布</button>
+          <button type="primary" style="background-color: #0f8504; flex: 1; position: relative; left: 0rpx; top: -24rpx" bindtap="changeUserAvatar" class="button1">修改头像</button>
+          <button type="primary" style="background-color: #0f8504; flex: 1; position: relative; left: 0rpx; top: -24rpx" bindtap="changeUser" class="button1">切换用户</button>
         </view>
 
 

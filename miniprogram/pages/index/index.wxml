@@ -1,4 +1,7 @@
 <!--pages/index/index.wxml-->
+
+<image src="/images/background/index.jpg" class="background-image"></image>
+
 <view class="fillwidth">
     <text class="headFont">
         海量好书，等你来寻
@@ -10,14 +13,100 @@
         <view style="width: 500rpx;height: 50rpx;">
             <input type="text" placeholder="Type here to search" bindinput="onInput" bindconfirm="onConfirm" />
         </view>
-        <view style="display: flex; justify-content:flex-end;width:120rpx;">
-            <view>
+        <view style="display: flex; justify-content:flex-end;width:120rpx;">            <view>
                 <button class="search-button" bindtap="onSearchButtonClick" hover-class="active-button" style="width: 120rpx;">搜索</button>
             </view>
         </view>
     </view>
 </view>
+
 <view class="fillwidth">
+    <text class="headFont">
+        热门书籍
+    </text>
+</view>
+
+<block  wx:if="{{curidx == 2 }}">
+
+<view style="display: flex;justify-content:flex-end;text-align:center;align-items:center;">
+    <view><button class="change-button" bindtap="onChange">换一换</button></view>
+</view>
+<view style="height:20rpx;"></view>
+<view style="width:750rpx;height:200rpx;justify-content:center;display:flex;">
+  <view class="hot-book" bindtap="ondetail" data-id="{{id[0]}}" >
+    <view class="bookimage">
+      <image src="{{picture[0]}}"></image>
+    </view>
+    <view class="bookinfo">
+      <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
+        <text class="clickable-text">{{title[0]}}</text>
+      </view>
+      <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+        <text>地址 : {{address[0]}}</text>
+      </view>
+      <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+        <text>售价 : {{price[0]}}元</text>
+      </view>
+      <view style="display:flex;width:470rpx;height:40rpx;justify-content:flex-end;">
+        <view style="width:300rpx; text-align: right;">
+          <text>点击热度 : {{count[0]}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style="height:20rpx;"></view>
+<view style="width:750rpx;height:200rpx;justify-content:center;display:flex;">
+  <view class="hot-book" bindtap="ondetail" data-id="{{id[1]}}" >
+    <view class="bookimage">
+      <image src="{{picture[1]}}"></image>
+    </view>
+    <view class="bookinfo">
+      <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
+        <text class="clickable-text">{{title[1]}}</text>
+      </view>
+      <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+        <text>地址 : {{address[1]}}</text>
+      </view>
+      <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+        <text>售价 : {{price[1]}}元</text>
+      </view>
+      <view style="display:flex;width:470rpx;height:40rpx;justify-content:flex-end;">
+        <view style="width:300rpx; text-align: right;">
+          <text>点击热度 : {{count[1]}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style="height:20rpx;"></view>
+<view style="width:750rpx;height:200rpx;justify-content:center;display:flex;">
+  <view class="hot-book" bindtap="ondetail" data-id="{{id[2]}}" >
+    <view class="bookimage">
+      <image src="{{picture[2]}}"></image>
+    </view>
+    <view class="bookinfo">
+      <view style="font-size:40rpx;text-indent:20rpx;height:55rpx;width:450rpx;text-align:left;font-weight:bold;">
+        <text class="clickable-text">{{title[2]}}</text>
+      </view>
+      <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+        <text>地址 : {{address[2]}}</text>
+      </view>
+      <view style="font-size:30rpx;text-indent:20rpx;height:45rpx;width:450rpx;text-align:left;">
+        <text>售价 : {{price[2]}}元</text>
+      </view>
+      <view style="display:flex;width:470rpx;height:40rpx;justify-content:flex-end;">
+        <view style="width:300rpx; text-align: right;">
+          <text>点击热度 : {{count[2]}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+</block>
+<!-- <view class="fillwidth">
     <text class="headFont">
         本日热门
     </text>
@@ -25,7 +114,6 @@
 
 <view class="hot-books">
     <view class="books-block">
-        <!-- 书籍1 -->
         <view class="book">
             <view class="bookimage">
                 <image src="/images/index/book1.jpg">
@@ -39,7 +127,6 @@
                     <text>这是书名信息</text>
                 </view>
             </view>
-            <!-- 其他信息 -->
         </view>
 
         <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
@@ -59,7 +146,6 @@
                     <text>这是书名信息</text>
                 </view>
             </view>
-            <!-- 其他信息 -->
         </view>
 
         <view style="display:flex;height:20rpx;justify-content:center;align-items:center;">
@@ -79,7 +165,6 @@
                     <text>这是书名信息</text>
                 </view>
             </view>
-            <!-- 其他信息 -->
         </view>
     </view>
-</view>
+</view> -->

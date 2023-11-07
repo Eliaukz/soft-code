@@ -1,43 +1,41 @@
 <wxs module="util" src="../util.wxs" />
 <view class="container">
-  <view class="form-group">
-    <view class="form-cell">
-      <view class="form-cell_title">书名</view>
-      <input class="form-cell_input" placeholder="请输入书名（10字以内）" placeholder-class="form-cell_title-placeholder"
-        bindinput="onTitleInput" value="{{title}}" />
+    <view class="form-group">
+        <view class="form-cell">
+            <view class="form-cell_title">书名</view>
+            <input class="form-cell_input" placeholder="请输入书名（10字以内）" placeholder-class="form-cell_title-placeholder" bindinput="onTitleInput" value="{{title}}" />
+        </view>
+        <view class="form-cell">
+            <view class="form-cell_title">详细描述</view>
+            <input class="form-cell_input" placeholder="请输入详细描述（如成色，交付方式等，100字以内）" placeholder-class="form-cell_title-placeholder" bindinput="onDescInput" value="{{desc}}" />
+        </view>
     </view>
-    <view class="form-cell">
-      <view class="form-cell_title">详细描述</view>
-      <input class="form-cell_input" placeholder="请输入详细描述（如成色，交付方式等，100字以内）" placeholder-class="form-cell_title-placeholder"
-        bindinput="onDescInput" value="{{desc}}" />
+    <view class="form-group">
+        <view class="form-cell inline">
+            <view>添加图片</view>
+            <view class="upload-text" bindtap="addFile">
+                {{(files.length === 0 ? "点击添加图片" : "已添加")}}
+            </view>
+            <image class="upload" bindtap="addFile" src="../../images/add/next.png"></image>
+        </view>
     </view>
-  </view>
-  <view class="form-group">
-    <view class="form-cell inline">
-      <view>添加图片</view>
-      <view class="upload-text" bindtap="addFile">
-        {{(files.length === 0 ? "点击添加图片" : "已添加")}}
-      </view>
-      <image class="upload" bindtap="addFile" src="../../images/add/next.png"></image>
+    <view class="form-group">
+        <view class="form-cell inline">
+            <view>价格/元(请填写数字)</view>
+            <input style="margin-left: auto;" bindinput="onPriceInput" value="{{price}}" />
+        </view>
+        <view class="form-cell inline">
+            <view>地址</view>
+            <picker class="option" bindchange="onChooseAddress" range="{{addressOptions}}">
+                {{addressOptions[address]}}
+            </picker>
+            <picker class="selector" bindchange="onChooseAddress" range="{{addressOptions}}">
+                <image class="selector" src="../../images/add/next.png" />
+            </picker>
+        </view>
     </view>
-  </view>
-  <view class="form-group">
-    <view class="form-cell inline">
-      <view>价格/元(请填写数字)</view>
-      <input style = "margin-left: auto;" bindinput="onPriceInput" value ="{{price}}"/>
+    <view class="footer">
+        <view class="reset" bindtap="resetbook">重置</view>
+        <view class="save" bindtap="savebook">保存</view>
     </view>
-    <view class="form-cell inline">
-      <view>地址</view>
-      <picker class="option" bindchange="onChooseAddress" range="{{addressOptions}}">
-        {{addressOptions[address]}}
-      </picker>
-      <picker class="selector" bindchange="onChooseAddress" range="{{addressOptions}}">
-        <image class="selector" src="../../images/add/next.png" />
-      </picker>
-    </view>
-  </view>
-  <view class="footer">
-    <view class="reset" bindtap="resetbook">重置</view>
-    <view class="save" bindtap="savebook">保存</view>
-  </view>
 </view>

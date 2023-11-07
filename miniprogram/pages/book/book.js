@@ -21,6 +21,7 @@ Page({
     desc: "", // 保存描述
     price: 0, // 保存价格
     addressarr: ["沁苑", "紫菘", "韵苑"],
+    count: 0, //书本被点击次数
     address: 0, // 保存地址
     freq: 0, // 保存发布状态
     star: 0, // 保存星标特效标记
@@ -43,6 +44,7 @@ Page({
     // this.getPicture();
     this.getBookInfo().then(() => {
       this.getPicture();
+      this.updateCount(); //更新书本点击次数+1
     });
   },
 
@@ -91,6 +93,7 @@ Page({
               bookInfo: res.data,
               owner: res.data.owner,
               files: res.data.files,
+              count: res.data.count,
               desc: res.data.desc,
               price: res.data.price,
               address: res.data.address,
@@ -141,6 +144,30 @@ Page({
       }
       resolve();
     });
+  },
+
+  /*
+   * 书本点击次数+1
+   */
+  updateCount() {
+    wx.cloud
+      .database()
+      .collection("book")
+      .doc(this.data.id)
+      .update({
+        data: {
+          // 更新的字段
+          count: this.data.count + 1,
+          // 可以添加多个字段的更新
+        },
+        success: (res) => {
+          console.log("更新成功", res);
+          console.log("count", res.data.count);
+        },
+        fail: (err) => {
+          console.error("更新失败", err);
+        },
+      });
   },
 
   /**

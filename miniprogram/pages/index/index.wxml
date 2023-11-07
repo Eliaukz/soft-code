@@ -7,6 +7,7 @@
         海量好书，等你来寻
     </text>
 </view>
+
 <view class="search-background">
     <view class="search-container">
         <view class="logo"></view>

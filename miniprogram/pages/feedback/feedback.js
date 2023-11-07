@@ -10,7 +10,7 @@ Page({
     name:"",
     phonenumber:"",
     suggestion:"",
-    value:3
+    stars:4
   },
 
   onLoad() {
@@ -37,11 +37,11 @@ Page({
   },
   //提交
   onChange(e) {
-    const { value } = e.detail;
+    const {num}=praseInt(e.detail.num);
     this.setData({
-      value: value,
+      stars: num,
     }, () => {
-      console.log(this.data.value);
+      console.log(this.data.stars);
     });
   },
 
@@ -76,35 +76,26 @@ Page({
   const db = await getApp().database();
   // 在数据库中新建待办事项，并填入已编辑对信息
   console.log(this.data.owner);
-  db.collection(getApp().globalData.collection)
+  db.collection(getApp().globalData.collection1)
     .add({
       data: {
         name: this.data.name, // 人名
-        stars: this.data.value, // 星星数
+        stars: this.data.stars, // 星星数
         phonenumber: this.data.phonenumber, // 电话号码
         suggestion: this.data.suggestion, //建议
         owner: this.data.owner,
       },
     })
     .then(() => {
-      wx.navigateBack({
-        delta: 0,
-      });
+      console.log("back");
+      wx.redirectTo({
+        url: '../../pages/list/index',
+      })
     });
 },
   
 
   
-  
-
-    
-  
-  
-  
-
-  
-  
-
   
 });
 

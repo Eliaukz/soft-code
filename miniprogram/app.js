@@ -3,6 +3,7 @@ App({
     usrInfo: null,
     // 用于存储待办记录的集合名称
     collection: "book",
+    collection1: "feedback",
     // 最大文件上传数量
     fileLimit: 4,
   },
@@ -17,6 +18,7 @@ App({
       collection: "book",
       // 最大文件上传数量
       fileLimit: 4,
+      collection1: "feedback",
     };
   },
 

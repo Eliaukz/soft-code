@@ -87,14 +87,21 @@ image {
 }
 .addressFilter{
   width: 750rpx;
-  height: 100rpx;
+  height: 70rpx;
+  font-weight: bold;
   margin-top: auto;
   display: flex;
-  background-color:teal;
+  background-color:rgb(255, 255, 255);
 }
 .option {
-  margin-left: auto;
   font-size: 150%;
+}
+.trigle{
+  width: 0;
+  height: 0;
+  border-left: 15rpx solid transparent;
+  border-right: 15rpx solid transparent;
+  border-top: 15rpx solid #000; /* 这里的颜色可以根据你的需求更改 */
 }
 .selector {
   width: 15px;

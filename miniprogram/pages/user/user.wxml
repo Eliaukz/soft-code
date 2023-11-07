@@ -12,24 +12,84 @@
 </view>
 
 
+<view class="container-table">
+  <view class="option-table">
+    <view class="line-table">
+      <view class="field-table">
+        <button style="width:600rpx;height:80rpx;">
+          <text space="nbsp" style="font-size:40rpx;" bindtap="jump2Warehouse">我的发布                             ></text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height: 45rpx;"></view>
+<view class="container-table">
+  <view class="option-table">
+    <view class="line-table">
+      <view class="field-table">
+        <button style="width:600rpx;height:80rpx;">
+          <text space="nbsp" style="font-size:40rpx;" bindtap="changeUserAvatar">修改头像                             ></text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height: 45rpx;"></view>
 
+<view class="container-table">
+  <view class="option-table">
+    <view class="line-table">
+      <view class="field-table">
+        <button style="width:600rpx;height:80rpx;">
+          <text space="nbsp" style="font-size:40rpx;" bind:tap="changeNickName">修改昵称                             ></text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height: 45rpx;"></view>
 
+<view class="container-table">
+  <view class="option-table">
+    <view class="line-table">
+      <view class="field-table">
+        <button style="width:600rpx;height:80rpx;">
+          <text space="nbsp" style="font-size:40rpx;" bindtap="changeUser">切换用户                             ></text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height: 45rpx;"></view>
 
+<view class="container-table">
+  <view class="option-table">
+    <view class="line-table">
+      <view class="field-table">
+        <button style="width:600rpx;height:80rpx;">
+          <text space="nbsp" style="font-size:40rpx;" bindtap="getHistory">历史记录                             ></text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height: 60rpx;"></view>
 
 
 <!-- 三个功能 -->
-<view style="display: flex; flex-direction: row; height: 214rpx; padding: 10px; margin: 10px; position: relative; left: -10rpx; top: -242rpx; width: 722rpx; box-sizing: border-box">
+<!-- <view style="display: flex; flex-direction: row; height: 214rpx; padding: 10px; margin: 10px; position: relative; left: -10rpx; top: -242rpx; width: 722rpx; box-sizing: border-box">
           <button type="primary" style="background-color: #0f8504; width: 225rpx; height: 167rpx; display: block; box-sizing: border-box; left: 0rpx; top: -24rpx; position: relative" bindtap="jump2Warehouse" class="button1">我的发布</button>
           <button type="primary" style="background-color: #0f8504; flex: 1; position: relative; left: 0rpx; top: -24rpx" bindtap="changeUserAvatar" class="button1">修改头像</button>
           <button type="primary" style="background-color: #0f8504; flex: 1; position: relative; left: 0rpx; top: -24rpx" bindtap="changeUser" class="button1">切换用户</button>
-        </view>
+        </view> -->
 
 
 
 
 <!-- 用户反馈-->
 <t-button theme="primary" block content="提交反馈" bind:tap="jump2feedback"></t-button>
-<t-button theme="primary" block content="修改昵称" bind:tap="changeNickName" style="margin-top: 10rpx;"></t-button>
+<!-- <t-button theme="primary" block content="修改昵称" bind:tap="changeNickName" style="margin-top: 10rpx;"></t-button> -->
 
        
 

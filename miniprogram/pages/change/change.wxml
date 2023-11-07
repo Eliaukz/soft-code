@@ -1,0 +1,10 @@
+<!--pages/change/change.wxml-->
+<image src="/images/background/user.jpg" class="background-image"></image>
+
+
+<view class="change-container">
+  <form bindsubmit="handleSubmit">
+    <input class="change-input" type="text" placeholder="请输入新昵称" name="nickname" />
+    <button class="change-submit-button" formType="submit">提交</button>
+  </form>
+</view>

@@ -54,6 +54,9 @@ Page({
       wx.cloud
         .database()
         .collection("book")
+        .where({
+          freq: 1 //仅考虑发布过的书籍
+        })
         .orderBy("count", "desc")
         .limit(100)
         .field({

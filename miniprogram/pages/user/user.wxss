@@ -100,3 +100,45 @@
 .my-custom-button:active {
   background-color: #e4e4e4; /* 修改为不同的背景颜色 */
 }
+.container-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  width: 750rpx;
+}
+
+.option-table {
+  width: 600rpx;
+  height: 80rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10rpx;
+  box-shadow: 2rpx 2rpx 5rpx rgba(0, 0, 0, 0.6);
+  text-align: center;
+  border: 1rpx solid #000;
+  justify-content: center;
+
+  padding: 20rpx;
+  font-size: 16rpx;
+}
+
+.line-table {
+  display: flex;
+  height: 80rpx;
+  width: 600rpx;
+  /* justify-self: start; */
+  justify-content: center;
+}
+
+
+.field-table {
+  display: flex;
+  height: 60rpx;
+  width: 600rpx;
+}
+
+.field-name {
+  display: flex;
+  height: 60rpx;
+  width: 200rpx;
+}

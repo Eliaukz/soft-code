@@ -213,4 +213,8 @@ Page({
       currentView: viewId,
     });
   },
+
+  getHistory(){
+
+  },
 });

@@ -1,12 +1,16 @@
 <!--pages/search/search.wxml-->
 <image src="/images/background/search.jpg" class="background-image"></image>
 <view class="addressFilter">
-      <view style="font-size:150%;">地址筛选</view>
-      <picker class="option" bindchange="onChooseAddress" range="{{addressOptions}}">
-          {{addressOptions[address]}}
-      </picker>
-      <picker class="selector" bindchange="onChooseAddress" range="{{addressOptions}}">
-      </picker>
+      <view style="font-size:150%;width:200rpx;">地址筛选</view>
+      <view style="display:flex;width:550rpx;justify-content: flex-end;">
+        <view style="display:flex;width:160rpx;border:5rpx solid #ccc;text-align:center;justify-content:center;align-items:center;">
+          <picker class="option" bindchange="onChooseAddress" range="{{addressOptions}}">
+              {{addressOptions[address]}}
+          </picker>
+          <view style="width:15rpx;"></view>
+          <view class="trigle"></view>
+        </view>
+      </view>
 </view>
 <block wx:if="{{address == 3}}">
     <block wx:if="{{booklist != null && booklist.length != 0}}">

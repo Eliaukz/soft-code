@@ -6,7 +6,7 @@
         </view>
     </view>
     <view class="footer">
-        <view class="list" bindtap="toFileList">查看附件</view>
-        <view class="edit" bindtap="toEditPage">编辑待办</view>
+        <view class="list" bindtap="toFileList">查看图片</view>
+        <view class="edit" bindtap="toEditPage">编辑详情</view>
     </view>
 </view>

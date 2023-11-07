@@ -85,3 +85,19 @@ image {
   text-decoration: underline; /* 添加下划线效果 */
   cursor: pointer; /* 鼠标悬停时显示手型光标，增加可点击感知 */
 }
+.addressFilter{
+  width: 750rpx;
+  height: 100rpx;
+  margin-top: auto;
+  display: flex;
+  background-color:teal;
+}
+.option {
+  margin-left: auto;
+  font-size: 150%;
+}
+.selector {
+  width: 15px;
+  height: 15px;
+  margin-left: auto;
+}

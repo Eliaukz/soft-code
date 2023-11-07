@@ -1,80 +1,110 @@
 // pages/feedback/feedback.js
+/* 新增待办页面 */
+const app = getApp();
+var count = 0;
+const db = wx.cloud.database();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  // 保存编辑中待办的
   data: {
-    
+    owner: null,
+    name:"",
+    phonenumber:"",
+    suggestion:"",
+    value:3
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    this.setData({
+      owner: app.globalData.userInfo,
+    });
+  },
+  // 表单输入处理函数
+  onNameInput(e) { //输入名字
+    this.setData({
+      name: e.detail.value,
+    });
+  },
+  onPhoneNumberInput(e) { //输入电话号码
+    this.setData({
+      phonenumber: e.detail.value,
+    });
+  },
+  onSuggestionInput(e) { //输入建议
+    this.setData({
+      suggestion: e.detail.value,
+    });
+    console.log("1");
+  },
+  //提交
+  onChange(e) {
+    const { value } = e.detail;
+    this.setData({
+      value: value,
+    }, () => {
+      console.log(this.data.value);
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  async tap() {
+  console.log("submit");
+  // 对输入框内容进行校验
+  if (this.data.name === "") {
+    this.setData({
+      name: "匿名",
+    });
+  }
+  if (this.data.suggestion=== "") {
+    wx.showToast({
+      title: "请填写建议",
+      icon: "error",
+      duration: 2000,
+    });
+    return;
+  }
+  if(this.data.phonenumber!==""){// 可以为空，但不能不合法
+    if (this.data.phonenumber.length !== 11 ||
+      !/^[1][3-9]\d{9}$/.test(this.data.phonenumber )) {// 判断手机号是否合法
+      wx.showToast({
+        title: "电话号码不合法",
+        icon: "error",
+        duration: 2000,
+      });
+      return;
+    }
   }
   
-})
-Component({
-  data: {
-    value: 3,
-  },
-  methods: {
-    onChange(e) {
-      const { value } = e.detail;
-      this.setData({
-        value,
+  const db = await getApp().database();
+  // 在数据库中新建待办事项，并填入已编辑对信息
+  console.log(this.data.owner);
+  db.collection(getApp().globalData.collection)
+    .add({
+      data: {
+        name: this.data.name, // 人名
+        stars: this.data.value, // 星星数
+        phonenumber: this.data.phonenumber, // 电话号码
+        suggestion: this.data.suggestion, //建议
+        owner: this.data.owner,
+      },
+    })
+    .then(() => {
+      wx.navigateBack({
+        delta: 0,
       });
-    },
-  },
+    });
+},
+  
+
+  
+  
+
+    
+  
+  
+  
+
+  
+  
+
+  
 });
+

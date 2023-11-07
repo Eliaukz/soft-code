@@ -1,3 +1,12 @@
 <!--pages/feedback/feedback.wxml-->
-<text>pages/feedback/feedback.wxml</text>
-<t-rate defaultValue="{{4}}" variant="filled" style="margin-top: 10px; left: 20px;"></t-rate>
+<wxs module="util" src="../util.wxs" />
+<text>给小程序总体评分</text>
+<t-rate defaultValue="{{4}}" variant="filled" style="margin-top: 10px; left: 20px;" bind:tap="onChange"></t-rate>
+<text>给我们的建议</text>
+<t-input label="您的名字" placeholder="可填“匿名”" bindinput="onNameInput"></t-input>
+<t-input label="联系方式" bindinput="onPhoneNumberInput" placeholder="请输入手机号(选填)" />
+<t-input label="您的建议" bindinput="onSuggestionInput" placeholder="请输入文字(必填)"></t-input>
+<button type="primary"  style="margin-top: 180px;" bind:tap="tap">提交反馈</button>
+
+
+

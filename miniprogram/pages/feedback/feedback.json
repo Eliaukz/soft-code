@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "t-rate": "/miniprogram_npm/tdesign-miniprogram/rate/rate"
+    "t-rate": "/miniprogram_npm/tdesign-miniprogram/rate/rate",
+    "t-input": "/miniprogram_npm/tdesign-miniprogram/input/input",
+    "t-button": "/miniprogram_npm/tdesign-miniprogram/button/button"
   }
 }

@@ -29,7 +29,7 @@
 
 <!-- 用户反馈-->
 <t-button theme="primary" block content="提交反馈" bind:tap="jump2feedback"></t-button>
-
+<t-button theme="primary" block content="修改昵称" bind:tap="changeNickName" style="margin-top: 10rpx;"></t-button>
 
        
 

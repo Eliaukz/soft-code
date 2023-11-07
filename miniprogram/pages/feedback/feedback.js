@@ -88,9 +88,9 @@ Page({
     })
     .then(() => {
       console.log("back");
-      wx.redirectTo({
-        url: '../../pages/list/index',
-      })
+      wx.switchTab({
+        url: '/pages/user/user', // 仓库页面的路径
+      });
     });
 },
   

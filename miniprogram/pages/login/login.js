@@ -26,10 +26,14 @@ Page({
     wx.cloud
       .database()
       .collection("user")
-      .where({
-        account_id: that.data.account_id,
-        password: that.data.password,
-      })
+      .where(
+          wx.cloud.database().command.and({
+            account_id: that.data.account_id,
+          },
+          {
+            password: that.data.password,
+          })
+      )
       .get({
         success(res) {
           console.log(res);

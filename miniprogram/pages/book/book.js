@@ -48,35 +48,6 @@ Page({
     });
   },
 
-  // getBookInfo() {
-  //   /*
-  //    * 从数据库获取书籍的信息
-  //    */
-  //   wx.cloud.database().collection("book").doc(this.data.id).get({
-  //     success: (res) =>{
-  //       console.log("OK!");
-  //       console.log("data :",res.data);
-  //       console.log("title :",res.data.title);
-  //       this.setData({
-  //         title: res.data.title,
-  //         bookInfo: res.data,
-  //         owner: res.data.owner,
-  //         files: res.data.files, //书的图片
-  //         desc: res.data.desc, // 保存描述
-  //         price: res.data.price, // 保存价格
-  //         address: res.data.address, // 保存地址
-  //         freq: res.data.freq, // 保存发布状态
-  //         star: res.data.star, // 保存星标特效标记
-  //       });
-  //       console.log("this.title :",this.data.title);
-  //     },
-  //     fail: (err) => {
-  //       console.log(err);
-  //     },
-
-  //   });
-  // },
-
   async getBookInfo() {
     return new Promise((resolve, reject) => {
       wx.cloud
@@ -208,9 +179,13 @@ Page({
       .get({
         success: (res) => {
           console.log(res, res.data);
-          wx.navigateTo({
-            url: "/pages/chat/chat?id=" + res.data[0]._id,
-          });
+          if(res.data.length==0) {
+              this.f();
+          }else{
+            wx.navigateTo({
+                url: "/pages/chat/chat?id=" + res.data[0]._id,
+            });
+        }
         },
         fail: (err) => {
           console.log(err);
@@ -296,8 +271,4 @@ Page({
    */
   onShareAppMessage() {},
 
-  /*
-   * 用户点击按钮触发事件
-   */
-  clickButton(e) {},
 });

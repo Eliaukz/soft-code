@@ -21,6 +21,7 @@ Page({
     this.setData({
       owner: app.globalData.userInfo,
     });
+    console.log(this.data.owner);
   },
   // 表单输入处理函数
   onTitleInput(e) {
@@ -59,28 +60,7 @@ Page({
       },
     });
 
-    // // 从会话选择文件
-    // wx.chooseMessageFile({
-    //   count: 1,
-    // }).then((res) => {
-    //   const file = res.tempFiles[0];
-    //   // 上传文件至云存储
-    //   getApp()
-    //     .uploadFile(file.name, file.path)
-    //     .then((res) => {
-    //       // 追加文件记录，保存其文件名、大小和文件 id
-    //       this.data.files.push({
-    //         name: file.name,
-    //         size: (file.size / 1024 / 1024).toFixed(2),
-    //         id: res.fileID,
-    //       });
-    //       // 更新文件显示
-    //       this.setData({
-    //         files: this.data.files,
-    //         fileName: this.data.fileName + file.name + " ",
-    //       });
-    //     });
-    // });
+
   },
   //a：选择的类型  //album:相册   //camera拍照
   chooseWxImageShop: function (a) {
